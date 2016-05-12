@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OfflineSource>
+  <Hyperlinks>
+    <Hyperlink ID="e977e659-92a1-45d7-b91c-af2bb8992700" Topic="How do you determine what SQL Tables have an identity column programatically" Url="http://stackoverflow.com/questions/87747/how-do-you-determine-what-sql-tables-have-an-identity-column-programatically" State="New">
+      <KeyPhraseList>,COLUMN,IDENTITY</KeyPhraseList>
+      <Description><![CDATA[I want to create a list of columns in SQL Server 2005 that have identity columns and their corresponding table in T-SQL. Any ideas?]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="7c2c89de-797c-4306-a213-2574d4faf345" Topic="Getting column information using T-SQL " Url="http://weblogs.sqlteam.com/joew/archive/2008/04/27/60574.aspx" State="New">
+      <KeyPhraseList>,COLUMN,INFO</KeyPhraseList>
+      <Description><![CDATA[Ocassionally, I see a question in the MSDN Forums where someone wants to know how to retrieve a list of column information for a table using only T-SQL. Although there are several ways in which to approach this, I like the following method. ]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="7fef8db0-9211-40ab-bd55-8880d7147865" Topic="COLUMNPROPERTY (Transact-SQL)" Url="http://technet.microsoft.com/en-us/library/ms174968.aspx" State="New">
+      <KeyPhraseList>,COLUMN,INFO</KeyPhraseList>
+      <Description><![CDATA[Returns information about a column or parameter.]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="cd629dd1-7380-49d6-9026-479db39140fa" Topic="Identity Columns" Url="https://www.simple-talk.com/sql/t-sql-programming/identity-columns/" State="New">
+      <KeyPhraseList>,COLUMN,IDENTITY</KeyPhraseList>
+      <Description><![CDATA[An identity column has a name, initial seed and step.  When a row is inserted into a table the column will take the value of the curent seed incremented by the step. Note: An identity column is not guaranteed to be unique nor consecutive. You should always place a unique index on an identity column if your system requires uniqueness. 
+]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="08d7ddff-70df-4a21-988b-e22d1237fdfa" Topic="SQL SERVER – List Schema Name and Table Name for Database" Url="http://blog.sqlauthority.com/2009/06/17/sql-server-list-schema-name-and-table-name-for-database/" State="New">
+      <KeyPhraseList>,SCHEMA,SQL SERVER,TABLE</KeyPhraseList>
+      <Description><![CDATA[Just a day ago, I was looking for script which generates all the tables in database along with its schema name. I tried to Search@SQLAuthority.com but got too many results. For the same reason, I am going to write down today’s quick and small blog post and I will remember that I had written I wrote it after my 1000th article.]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="b521c985-6b4b-46d3-8987-02793bab67ea" Topic="Exploring Database Schemas on SQL Server" Url="http://www.codeproject.com/Articles/30280/Exploring-Database-Schemas-on-SQL-Server" State="New">
+      <KeyPhraseList>,SCHEMA,SQL SERVER</KeyPhraseList>
+      <Description><![CDATA[There is very little you can do with a database without knowing the schema. SQL Server Management Studio has a tree view that lets you see the tables, views and other objects in the database, but drilling down in this list to find the information you are interested in can be fiddly and time-consuming.]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="66128aa3-f7f9-473d-816c-5127d9a7f6ff" Topic="how to get list of available SQL Servers using C#?" Url="http://social.msdn.microsoft.com/Forums/sqlserver/en-US/fda283ef-5a8b-424d-b549-074ccc19c8d7/how-to-get-list-of-available-sql-servers-using-c" State="New">
+      <KeyPhraseList>,SERVER LIST,SQL SERVER</KeyPhraseList>
+      <Description><![CDATA[using C#, is there anyway to get all vailable SQL Servers on the local PC and the local network? It's really help but the problem that SqlDataSourceEnumerator.Instance.GetDataSources() returns only default instances of SQL server.I have an additional instances of SQL server on each machine.Do you know how I can get a list of instances ?
+]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="3d1ebcff-bb5f-44e1-a5cc-ef05d70cc321" Topic="ICodeGenerator Interface" Url="https://msdn.microsoft.com/en-us/library/system.codedom.compiler.icodegenerator(v=vs.110).aspx" State="New">
+      <KeyPhraseList>,.NET,CODE,GENERATE,GENERATOR</KeyPhraseList>
+      <Description><![CDATA[Defines an interface for generating code.]]></Description>
+    </Hyperlink>
+    <Hyperlink ID="f2582999-c942-4bb4-b1cc-c72722ca6168" Topic="iCodeGenerator - C# OpenSource data-centric code generation utility" Url="http://www.icodegenerator.net/" State="New">
+      <KeyPhraseList>,.NET,CODE,GENERATE</KeyPhraseList>
+      <Description><![CDATA[ C# OpenSource data-centric code generation utility. Watch YouTube video at https://www.youtube.com/watch?v=a58NBar1Zyw]]></Description>
+    </Hyperlink>
+  </Hyperlinks>
+  <KeyPhrases>,.NET,CODE,COLUMN,GENERATE,GENERATOR,IDENTITY,INFO,SCHEMA,SERVER LIST,SQL SERVER,TABLE</KeyPhrases>
+</OfflineSource>
