@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Connections>
+  <Excel>
+    <ExcelConnection FriendlyName="Excel 2010 (32/64 bit) ACE Driver" Provider="Microsoft.ACE.OLEDB.12.0">
+      <ExtendedProperties ExcelPlatform="Excel 12.0" HDR="Yes" IMEX="1" />
+    </ExcelConnection>
+    <ExcelConnection FriendlyName="Excel 2007 (32 bit) JET Driver" Provider="Microsoft.Jet.OLEDB.4.0">
+      <ExtendedProperties ExcelPlatform="Excel 8.0" HDR="Yes" IMEX="2" />
+    </ExcelConnection>
+  </Excel>
+  <SQLServer>
+    <SqlServerConnection FriendlyName="National Treasury - DEV - alm" ConnectionString="Server=(local);Database=alm;Trusted_Connection=True" />
+    <SqlServerConnection FriendlyName="National Treasury - DEV - workflow" ConnectionString="Server=(local);Database=alm;Trusted_Connection=True" />
+    <SqlServerConnection FriendlyName="National Treasury - DEV - central" ConnectionString="Server=(local);Database=alm;Trusted_Connection=True" />
+    <SqlServerConnection FriendlyName="National Treasury - DEV - cis" ConnectionString="Server=(local);Database=alm;Trusted_Connection=True" />
+    <SqlServerConnection FriendlyName="National Treasury - DEV - correspondence" ConnectionString="Server=(local);Database=alm;Trusted_Connection=True" />
+	  <SqlServerConnection FriendlyName="ZACTNSQL15" ConnectionString="Data Source=ZACTNSQL15;User ID=IRISUser;password=iris;Initial Catalog=ERU;Persist Security Info=True;Connect Timeout=3;" />
+	  <SqlServerConnection FriendlyName="DEV - IRIS EQU" ConnectionString="Data Source=ZACTNSQL51;User ID=IRISUser;password=iris;Initial Catalog=EQU;Persist Security Info=True;Connect Timeout=3;" />
+	  <SqlServerConnection FriendlyName="PRO - IRIS ERU" ConnectionString="Data Source=ZACTNSQL15;User ID=IRISUser;password=iris;Initial Catalog=ERU;Persist Security Info=True;Connect Timeout=3;" />
+	  <SqlServerConnection FriendlyName="PRO - IRIS BOND" ConnectionString="Data Source=ZACTNSQL15;User ID=IRISUser;password=iris;Initial Catalog=Bond;Persist Security Info=True;Connect Timeout=3;" />
+  </SQLServer>
+</Connections>
+

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnitTests</RootNamespace>
+    <AssemblyName>UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSources\Tests\ExcelDataSourceTests.cs" />
+    <Compile Include="DataSources\Tests\SqlDataSourceTests.cs" />
+    <Compile Include="DataSources\Tests\CommonDbConnectStrings.cs" />
+    <Compile Include="ProjectFileManager\Tests\ProjectFileVersion.cs" />
+    <Compile Include="ProjectFileManager\Tests\ProjectFileIO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\LoadTemplate.cs" />
+    <Compile Include="ReplaceEngineTests.cs" />
+    <Compile Include="ProjectFileTests.cs" />
+    <Compile Include="XessMediatorTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\CygSoft.Xess.App\CygSoft.Xess.App.csproj">
+      <Project>{7a60436c-0a90-4dee-8208-a16b0784021d}</Project>
+      <Name>CygSoft.Xess.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\CygSoft.Xess.Infrastructure\CygSoft.Xess.Infrastructure.csproj">
+      <Project>{1e6187de-9fcb-4f0d-ac6a-f7ea2548237b}</Project>
+      <Name>CygSoft.Xess.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\CygSoft.Xess.Infrastructure.DataSources\CygSoft.Xess.Infrastructure.DataSources.csproj">
+      <Project>{ca79ce41-7346-45fc-b73d-8f50cd5586f4}</Project>
+      <Name>CygSoft.Xess.Infrastructure.DataSources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\CygSoft.Xess.Domain\CygSoft.Xess.Domain.csproj">
+      <Project>{705f96c0-6cb0-4ffa-892a-2775ead0ac99}</Project>
+      <Name>CygSoft.Xess.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\CygSoft.Xess.ProjectFile\CygSoft.Xess.ProjectFile.csproj">
+      <Project>{bd1518fe-5692-4ab8-b44d-537ceec18cd1}</Project>
+      <Name>CygSoft.Xess.ProjectFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\CygSoft.Xess.Infrastructure.ReplaceEngine\CygSoft.Xess.Infrastructure.ReplaceEngine.csproj">
+      <Project>{47971df5-e69c-410c-b3e3-f6767f7209c4}</Project>
+      <Name>CygSoft.Xess.Infrastructure.ReplaceEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Notes.txt" />
+    <Content Include="Files\connections.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\excel_data.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Files\bankrecon.xess">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="ProjectFileManager\Files\XESS_Unversioned.xess">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ProjectFileManager\Files\XESS_Version_1.xess">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

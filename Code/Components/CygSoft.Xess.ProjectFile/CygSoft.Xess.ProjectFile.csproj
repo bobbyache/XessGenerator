@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BD1518FE-5692-4AB8-B44D-537CEEC18CD1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CygSoft.Xess.ProjectFile</RootNamespace>
+    <AssemblyName>CygSoft.Xess.ProjectFile</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataSourceReader.cs" />
+    <Compile Include="DataSourceWriter.cs" />
+    <Compile Include="ElementConstants.cs.cs" />
+    <Compile Include="FileFactory.cs" />
+    <Compile Include="FileVersion.cs" />
+    <Compile Include="IXessFileManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateReader.cs" />
+    <Compile Include="TemplateWriter.cs" />
+    <Compile Include="XessFileManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CygSoft.Xess.Domain\CygSoft.Xess.Domain.csproj">
+      <Project>{705f96c0-6cb0-4ffa-892a-2775ead0ac99}</Project>
+      <Name>CygSoft.Xess.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CygSoft.Xess.Infrastructure.DataSources\CygSoft.Xess.Infrastructure.DataSources.csproj">
+      <Project>{ca79ce41-7346-45fc-b73d-8f50cd5586f4}</Project>
+      <Name>CygSoft.Xess.Infrastructure.DataSources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CygSoft.Xess.Infrastructure\CygSoft.Xess.Infrastructure.csproj">
+      <Project>{1e6187de-9fcb-4f0d-ac6a-f7ea2548237b}</Project>
+      <Name>CygSoft.Xess.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

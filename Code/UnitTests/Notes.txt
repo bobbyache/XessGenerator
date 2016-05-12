@@ -1,0 +1,37 @@
+﻿
+
+
+    //-------------------------------------------------------------------------------------------------------
+    // dataSourceModel.GetTableNameFromId, dataSourceModel.GetTable, dataSourceModel.DataSourceIdExists
+    // These are all methods that act on the object we're trying to decouple. Think it might be better to
+    // have these methods exposed on the data source itself. So here where we have a 
+    //          templateSection.DataSourceID
+    // we could use a IDataSource dataSource = dataSources.Find(dataSourceId)
+    //
+    // then one could just use the above methods on the actual data source itself, which is where we think
+    // these methods should actually belong.
+    //
+    // if we're going to let each data source handle its own reading and writing of the dataset, then we need
+    // to distinguish between "importing" data from the original data source to the "current" data which
+    // has been written to disk. ie.
+    // - ImportOriginalSource()
+    // - GetCurrentSource()
+    // - SaveCurrentSource()
+    //
+    // One idea that can be followed is that a DataSource consists of two parts. One part is the original
+    // source that is derived from the database or excel file or file system. The second part is the 
+    // currently persisted "instance data" which will always be stored the same way (currently as a dataset).
+    // So all the functions to do with saving and reading and other operations on the dataset could be 
+    // added to a base object or an IDataSetSource or IInstanceDataSet interface. The two (IInstanceDataset
+    // and IDataSource) can be combined to form a "DataSource" object which can then be more effectively
+    // used by the generate engines.
+    //-------------------------------------------------------------------------------------------------------
+
+	DataSource
+	|
+	|___ IInstanceDataSet
+	|
+	|___ IOriginalDataSource
+
+	With this kind of structure, we can keep track of current data instance and the orginal source if we ever
+	need to refresh it. Possibility als exists to create backup sets etc.

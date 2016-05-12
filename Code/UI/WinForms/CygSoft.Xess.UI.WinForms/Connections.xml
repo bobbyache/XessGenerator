@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Connections>
+  <Excel>
+    <ExcelConnection FriendlyName="Excel 2010 (32/64 bit) ACE Driver" Provider="Microsoft.ACE.OLEDB.12.0">
+      <ExtendedProperties ExcelPlatform="Excel 12.0" HDR="Yes" IMEX="1" />
+    </ExcelConnection>
+    <ExcelConnection FriendlyName="Excel 2007 (32 bit) JET Driver" Provider="Microsoft.Jet.OLEDB.4.0">
+      <ExtendedProperties ExcelPlatform="Excel 8.0" HDR="Yes" IMEX="2" />
+    </ExcelConnection>
+  </Excel>
+  <SQLServer>
+    <SqlServerConnection FriendlyName="MSDF - DEV(MSDF_DM) - MSDF.BBDNET.BBD.CO.ZA" ConnectionString="Server=MSDF.BBDNET.BBD.CO.ZA;Database=MSDF_DM;User Id=sa;Password=bbdadmin" />
+    <SqlServerConnection FriendlyName="MSDF - DEV - MSDF.BBDNET.BBD.CO.ZA" ConnectionString="Server=MSDF.BBDNET.BBD.CO.ZA;User Id=sa;Password=bbdadmin" />
+  </SQLServer>
+</Connections>
+

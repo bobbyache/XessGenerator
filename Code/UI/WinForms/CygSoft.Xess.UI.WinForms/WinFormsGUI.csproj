@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ACE4B856-943A-469E-83D8-CAA8B91AEB68}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CygSoft.Xess.UI.WinForms</RootNamespace>
+    <AssemblyName>XessWinFormsGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>XessGenerator.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CygX1.UI.WinForms.RecentFileMenu, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\External\CygX1.UI.WinForms.RecentFileMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="SyntaxBox, Version=1.4.10.36885, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\External\SyntaxBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ApplicationDialogs.cs" />
+    <Compile Include="Controls\BlueprintEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\BlueprintEditorControl.designer.cs">
+      <DependentUpon>BlueprintEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataSourceSelectionEventArgs.cs" />
+    <Compile Include="Controls\GenerateDatasourceToolstripDropdown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\GenerateDatasourceToolstripDropdown.Designer.cs">
+      <DependentUpon>GenerateDatasourceToolstripDropdown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressConsole.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressConsole.designer.cs">
+      <DependentUpon>ProgressConsole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MatrixTableListCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MatrixTableListCtrl.designer.cs">
+      <DependentUpon>MatrixTableListCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SectionEditCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SectionEditCtrl.designer.cs">
+      <DependentUpon>SectionEditCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TemplateCtrl.designer.cs">
+      <DependentUpon>TemplateCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateDataCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TemplateDataCtrl.designer.cs">
+      <DependentUpon>TemplateDataCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateDropdownCtrl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TemplateDropdownCtrl.Designer.cs">
+      <DependentUpon>TemplateDropdownCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateEditCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TemplateEditCtrl.designer.cs">
+      <DependentUpon>TemplateEditCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateInfoCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TemplateInfoCtrl.Designer.cs">
+      <DependentUpon>TemplateInfoCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TemplateView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\TemplateView.designer.cs">
+      <DependentUpon>TemplateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AboutBoxDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\AboutBoxDialog.Designer.cs">
+      <DependentUpon>AboutBoxDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ExcelSourceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ExcelSourceDialog.designer.cs">
+      <DependentUpon>ExcelSourceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WinFolderSourceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\WinFolderSourceDialog.designer.cs">
+      <DependentUpon>WinFolderSourceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SqlServerSourceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SqlServerSourceDialog.designer.cs">
+      <DependentUpon>SqlServerSourceDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DataSourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataSourceForm.Designer.cs">
+      <DependentUpon>DataSourceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSettings\CommonConstants.cs" />
+    <Compile Include="GlobalSettings\ConfigSettings.cs" />
+    <Compile Include="GlobalSettings\RegistrySettings.cs" />
+    <Compile Include="ResourceHandler.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TemplateForm.Designer.cs">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\BlueprintEditorControl.resx">
+      <DependentUpon>BlueprintEditorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ProgressConsole.resx">
+      <DependentUpon>ProgressConsole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MatrixTableListCtrl.resx">
+      <DependentUpon>MatrixTableListCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SectionEditCtrl.resx">
+      <DependentUpon>SectionEditCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TemplateCtrl.resx">
+      <DependentUpon>TemplateCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TemplateDataCtrl.resx">
+      <DependentUpon>TemplateDataCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TemplateEditCtrl.resx">
+      <DependentUpon>TemplateEditCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TemplateInfoCtrl.resx">
+      <DependentUpon>TemplateInfoCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TemplateView.resx">
+      <DependentUpon>TemplateView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\AboutBoxDialog.resx">
+      <DependentUpon>AboutBoxDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ExcelSourceDialog.resx">
+      <DependentUpon>ExcelSourceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WinFolderSourceDialog.resx">
+      <DependentUpon>WinFolderSourceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\SqlServerSourceDialog.resx">
+      <DependentUpon>SqlServerSourceDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataSourceForm.resx">
+      <DependentUpon>DataSourceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Connections.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\folder_add.png" />
+    <None Include="Resources\data_previous.png" />
+    <None Include="Resources\data_refresh.png" />
+    <None Include="Resources\row.png" />
+    <None Include="Resources\data.png" />
+    <None Include="Resources\folder_table.png" />
+    <None Include="Resources\script_edit.png" />
+    <Content Include="syntax.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XessGenerator.ico" />
+    <None Include="Resources\Gen.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\page_delete.png" />
+    <None Include="Resources\page_add.png" />
+    <None Include="Resources\page_white.png" />
+    <None Include="Resources\arrow_down.png" />
+    <None Include="Resources\arrow_up1.png" />
+    <None Include="Resources\tick.png" />
+    <None Include="Resources\Gen %282%29.png" />
+    <None Include="Resources\print_img.png" />
+    <None Include="Resources\save_img.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\Copy.png" />
+    <None Include="Resources\table_add.png" />
+    <None Include="Resources\file-copy.png" />
+    <None Include="Resources\database_add.png" />
+    <None Include="Resources\book_open.png" />
+    <None Include="Resources\arrow_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CygSoft.Xess.UI.WinForms.FileBrowsing\CygSoft.Xess.UI.WinForms.FileBrowsing.csproj">
+      <Project>{1a177c62-45a1-4234-943e-3a5b4ec11a38}</Project>
+      <Name>CygSoft.Xess.UI.WinForms.FileBrowsing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\CygSoft.Xess.App\CygSoft.Xess.App.csproj">
+      <Project>{7a60436c-0a90-4dee-8208-a16b0784021d}</Project>
+      <Name>CygSoft.Xess.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\CygSoft.Xess.Infrastructure\CygSoft.Xess.Infrastructure.csproj">
+      <Project>{1E6187DE-9FCB-4F0D-AC6A-F7EA2548237B}</Project>
+      <Name>CygSoft.Xess.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\CygSoft.Xess.Infrastructure.DataSources\CygSoft.Xess.Infrastructure.DataSources.csproj">
+      <Project>{ca79ce41-7346-45fc-b73d-8f50cd5586f4}</Project>
+      <Name>CygSoft.Xess.Infrastructure.DataSources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Components\CygSoft.Xess.Infrastructure.ReplaceEngine\CygSoft.Xess.Infrastructure.ReplaceEngine.csproj">
+      <Project>{47971df5-e69c-410c-b3e3-f6767f7209c4}</Project>
+      <Name>CygSoft.Xess.Infrastructure.ReplaceEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
