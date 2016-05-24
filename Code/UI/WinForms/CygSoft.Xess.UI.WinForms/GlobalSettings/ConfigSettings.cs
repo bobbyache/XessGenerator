@@ -163,6 +163,25 @@ namespace CygSoft.Xess.UI.WinForms.GlobalSettings
             }
         }
 
+        private static string sqlServerSyntax;
+        public static string SQLServerSyntax
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(defaultSyntax))
+                    defaultSyntax = ConfigurationManager.AppSettings["SQLServerSyntax"];
+
+                return defaultSyntax;
+            }
+            set
+            {
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                configuration.AppSettings.Settings["SQLServerSyntax"].Value = value;
+                configuration.Save();
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+        }
+
         public static void Refresh()
         {
             registryFolder = ConfigurationManager.AppSettings["RegistryPath"];
@@ -174,6 +193,7 @@ namespace CygSoft.Xess.UI.WinForms.GlobalSettings
             winMergePath = ConfigurationManager.AppSettings["WinMergePath"];
             syntaxFilePath = ConfigurationManager.AppSettings["SyntaxFilePath"];
             defaultSyntax = ConfigurationManager.AppSettings["DefaultSyntax"];
+            sqlServerSyntax = ConfigurationManager.AppSettings["SQLServerSyntax"];
         }
 
     }

@@ -16,6 +16,7 @@ namespace CygSoft.Xess.UI.WinForms.Dialogs
         public SqlServerSourceDialog(string projectFilePath, string connectionsFile)
         {
             InitializeComponent();
+            SetSQLSyntax();
             this.syntaxBox.SplitView = false;
             this.connectionsFile = connectionsFile;
             this.projectFilePath = projectFilePath;
@@ -74,6 +75,13 @@ namespace CygSoft.Xess.UI.WinForms.Dialogs
             {
                 MessageBox.Show(ex.Message + Environment.NewLine + Environment.NewLine + ex.StackTrace, ConfigSettings.ApplicationTitle);
             }
+        }
+
+        private void SetSQLSyntax()
+        {
+            SyntaxFile syntaxFile = XessApplication.GetSyntaxFile(ConfigSettings.SQLServerSyntax);
+            if (syntaxFile != null)
+                syntaxBox.Document.SyntaxFile = syntaxFile == null ? "" : syntaxFile.FilePath;
         }
 
         public void AddNew()

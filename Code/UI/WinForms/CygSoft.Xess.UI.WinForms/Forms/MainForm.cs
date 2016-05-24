@@ -175,7 +175,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
                 recentProjectMenu.CurrentlyOpenedFile = XessApplication.FilePath;
                 this.Text = string.Format("{0} [{1}]", ConfigSettings.ApplicationTitle, Path.GetFileName(XessApplication.FilePath));
                 tssFullPath.Text = XessApplication.FilePath;
-                richTextOutput.Document.Clear();
+                outputTextbox.Document.Clear();
                 tstripTemplateList.RefreshTemplateList();
                 DisplayTemplateInfo();
             }
@@ -226,7 +226,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
         private void GenerateTemplate(TemplateListItem templateListItem)
         {
             if (tstripTemplateList.SelectedIndex == -1)
-                richTextOutput.Document.Text = "";
+                outputTextbox.Document.Text = "";
 
             else if (XessApplication.FileLoaded)
             {
@@ -326,14 +326,14 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             {
                 SyntaxFile defaultFile = XessApplication.GetSyntaxFile(ConfigSettings.DefaultSyntax);
                 if (defaultFile != null)
-                    richTextOutput.Document.SyntaxFile = defaultFile == null ? "" : defaultFile.FilePath;
+                    outputTextbox.Document.SyntaxFile = defaultFile == null ? "" : defaultFile.FilePath;
             }
             else
             {
-                richTextOutput.Document.SyntaxFile = syntaxFile.FilePath;
+                outputTextbox.Document.SyntaxFile = syntaxFile.FilePath;
             }
 
-            richTextOutput.Document.Text = text;
+            outputTextbox.Document.Text = text;
             progressConsole.AppendConsoleText("", Color.Black, false);
         }
 
@@ -420,7 +420,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
 
             string tempFile = XessApplication.CreateTemporaryFile();
 
-            File.WriteAllText(tempFile, richTextOutput.Document.Text);
+            File.WriteAllText(tempFile, outputTextbox.Document.Text);
 
             Process.Start(ConfigSettings.WinMergePath,
                 string.Format("/u \"{0}\" \"{1}\"",

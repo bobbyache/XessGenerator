@@ -64,7 +64,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             this.btnGetDifference = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.richTextOutput = new Alsing.Windows.Forms.SyntaxBoxControl();
+            this.outputTextbox = new Alsing.Windows.Forms.SyntaxBoxControl();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.progressConsole = new CygSoft.Xess.UI.WinForms.Controls.ProgressConsole();
@@ -347,7 +347,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             // 
             // splitContainer.Panel1
             // 
-            this.splitContainer.Panel1.Controls.Add(this.richTextOutput);
+            this.splitContainer.Panel1.Controls.Add(this.outputTextbox);
             // 
             // splitContainer.Panel2
             // 
@@ -356,36 +356,36 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             this.splitContainer.SplitterDistance = 358;
             this.splitContainer.TabIndex = 12;
             // 
-            // richTextOutput
+            // outputTextbox
             // 
-            this.richTextOutput.ActiveView = Alsing.Windows.Forms.ActiveView.BottomRight;
-            this.richTextOutput.AutoListPosition = null;
-            this.richTextOutput.AutoListSelectedText = "a123";
-            this.richTextOutput.AutoListVisible = false;
-            this.richTextOutput.BackColor = System.Drawing.Color.White;
-            this.richTextOutput.BorderStyle = Alsing.Windows.Forms.BorderStyle.None;
-            this.richTextOutput.CopyAsRTF = false;
-            this.richTextOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextOutput.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextOutput.FontName = "Courier new";
-            this.richTextOutput.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.richTextOutput.InfoTipCount = 1;
-            this.richTextOutput.InfoTipPosition = null;
-            this.richTextOutput.InfoTipSelectedIndex = 1;
-            this.richTextOutput.InfoTipVisible = false;
-            this.richTextOutput.Location = new System.Drawing.Point(0, 0);
-            this.richTextOutput.LockCursorUpdate = false;
-            this.richTextOutput.Name = "richTextOutput";
-            this.richTextOutput.ReadOnly = true;
-            this.richTextOutput.ShowScopeIndicator = false;
-            this.richTextOutput.Size = new System.Drawing.Size(1229, 358);
-            this.richTextOutput.SmoothScroll = false;
-            this.richTextOutput.SplitView = false;
-            this.richTextOutput.SplitviewH = -4;
-            this.richTextOutput.SplitviewV = -4;
-            this.richTextOutput.TabGuideColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
-            this.richTextOutput.TabIndex = 9;
-            this.richTextOutput.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
+            this.outputTextbox.ActiveView = Alsing.Windows.Forms.ActiveView.BottomRight;
+            this.outputTextbox.AutoListPosition = null;
+            this.outputTextbox.AutoListSelectedText = "a123";
+            this.outputTextbox.AutoListVisible = false;
+            this.outputTextbox.BackColor = System.Drawing.Color.White;
+            this.outputTextbox.BorderStyle = Alsing.Windows.Forms.BorderStyle.None;
+            this.outputTextbox.CopyAsRTF = false;
+            this.outputTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.outputTextbox.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputTextbox.FontName = "Courier new";
+            this.outputTextbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.outputTextbox.InfoTipCount = 1;
+            this.outputTextbox.InfoTipPosition = null;
+            this.outputTextbox.InfoTipSelectedIndex = 1;
+            this.outputTextbox.InfoTipVisible = false;
+            this.outputTextbox.Location = new System.Drawing.Point(0, 0);
+            this.outputTextbox.LockCursorUpdate = false;
+            this.outputTextbox.Name = "outputTextbox";
+            this.outputTextbox.ReadOnly = true;
+            this.outputTextbox.ShowScopeIndicator = false;
+            this.outputTextbox.Size = new System.Drawing.Size(1229, 358);
+            this.outputTextbox.SmoothScroll = false;
+            this.outputTextbox.SplitView = false;
+            this.outputTextbox.SplitviewH = -4;
+            this.outputTextbox.SplitviewV = -4;
+            this.outputTextbox.TabGuideColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.outputTextbox.TabIndex = 9;
+            this.outputTextbox.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
             // 
             // tabControl1
             // 
@@ -504,7 +504,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripButton btnSaveDefaultFile;
         private System.Windows.Forms.SplitContainer splitContainer;
-        private Alsing.Windows.Forms.SyntaxBoxControl richTextOutput;
+        private Alsing.Windows.Forms.SyntaxBoxControl outputTextbox;
         private Alsing.SourceCode.SyntaxDocument syntaxDocument1;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
