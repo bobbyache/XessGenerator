@@ -35,13 +35,10 @@
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuQuit = new System.Windows.Forms.ToolStripMenuItem();
-            this.operationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuUpdateVariables = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.blueprintSyntaxBox = new Alsing.Windows.Forms.SyntaxBoxControl();
             this.resultsSyntaxDoc = new Alsing.SourceCode.SyntaxDocument(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGrid = new System.Windows.Forms.TabPage();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.tabResults = new System.Windows.Forms.TabPage();
@@ -57,7 +54,7 @@
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tabResults.SuspendLayout();
@@ -67,8 +64,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.operationsToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(919, 24);
@@ -110,29 +106,7 @@
             this.mnuQuit.Name = "mnuQuit";
             this.mnuQuit.Size = new System.Drawing.Size(152, 22);
             this.mnuQuit.Text = "Quit";
-            // 
-            // operationsToolStripMenuItem
-            // 
-            this.operationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuUpdateVariables,
-            this.menuGenerate});
-            this.operationsToolStripMenuItem.Name = "operationsToolStripMenuItem";
-            this.operationsToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
-            this.operationsToolStripMenuItem.Text = "Operations";
-            // 
-            // menuUpdateVariables
-            // 
-            this.menuUpdateVariables.Name = "menuUpdateVariables";
-            this.menuUpdateVariables.Size = new System.Drawing.Size(162, 22);
-            this.menuUpdateVariables.Text = "Update Variables";
-            this.menuUpdateVariables.Click += new System.EventHandler(this.menuUpdateVariables_Click);
-            // 
-            // menuGenerate
-            // 
-            this.menuGenerate.Name = "menuGenerate";
-            this.menuGenerate.Size = new System.Drawing.Size(162, 22);
-            this.menuGenerate.Text = "Generate";
-            this.menuGenerate.Click += new System.EventHandler(this.menuGenerate_Click);
+            this.mnuQuit.Click += new System.EventHandler(this.mnuQuit_Click);
             // 
             // splitContainerMain
             // 
@@ -147,7 +121,7 @@
             // 
             // splitContainerMain.Panel2
             // 
-            this.splitContainerMain.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainerMain.Panel2.Controls.Add(this.tabControl);
             this.splitContainerMain.Size = new System.Drawing.Size(919, 506);
             this.splitContainerMain.SplitterDistance = 191;
             this.splitContainerMain.TabIndex = 5;
@@ -182,6 +156,7 @@
             this.blueprintSyntaxBox.TabIndex = 1;
             this.blueprintSyntaxBox.Text = "syntaxBoxControl1";
             this.blueprintSyntaxBox.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
+            this.blueprintSyntaxBox.Leave += new System.EventHandler(this.blueprintSyntaxBox_Leave);
             // 
             // resultsSyntaxDoc
             // 
@@ -191,17 +166,17 @@
             this.resultsSyntaxDoc.Modified = false;
             this.resultsSyntaxDoc.UndoStep = 0;
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabGrid);
-            this.tabControl1.Controls.Add(this.tabResults);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(919, 311);
-            this.tabControl1.TabIndex = 1;
-            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
+            this.tabControl.Controls.Add(this.tabGrid);
+            this.tabControl.Controls.Add(this.tabResults);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(919, 311);
+            this.tabControl.TabIndex = 1;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // tabGrid
             // 
@@ -325,7 +300,7 @@
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tabResults.ResumeLayout(false);
@@ -339,14 +314,11 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.SplitContainer splitContainerMain;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabGrid;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TabPage tabResults;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem operationsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuUpdateVariables;
-        private System.Windows.Forms.ToolStripMenuItem menuGenerate;
         private System.Windows.Forms.ContextMenuStrip columnMenu;
         private System.Windows.Forms.ToolStripMenuItem dateGeneratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sAIDGeneratorToolStripMenuItem;

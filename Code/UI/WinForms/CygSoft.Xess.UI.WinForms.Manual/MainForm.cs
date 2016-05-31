@@ -61,16 +61,6 @@ namespace CygSoft.Xess.UI.WinForms
             dataGridView.BeginEdit(false);
         }
 
-        private void menuUpdateVariables_Click(object sender, EventArgs e)
-        {
-            workSet.BlueprintText = blueprintSyntaxBox.Document.Text;
-        }
-
-        private void menuGenerate_Click(object sender, EventArgs e)
-        {
-            GenerateText();
-        }
-
         private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
@@ -87,11 +77,27 @@ namespace CygSoft.Xess.UI.WinForms
             OpenProject();
         }
 
-        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabResults)
+            if (tabControl.SelectedTab == tabResults)
             {
                 GenerateText();
+            }
+        }
+
+        private void blueprintSyntaxBox_Leave(object sender, EventArgs e)
+        {
+            workSet.BlueprintText = blueprintSyntaxBox.Document.Text;
+            dataGridView.DataSource = workSet.Table;
+            GenerateText();
+        }
+
+        private void mnuQuit_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(this, "Sure you want to exit?", "Xess Manual Generator", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }
