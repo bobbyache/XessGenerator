@@ -39,7 +39,9 @@ namespace CygSoft.Xess.UI.WinForms
 
         public void Update(string blueprintText)
         {
-            Regex regx = new Regex(@"@{.*?}");
+            //Regex regx = new Regex(@"@{.*?}");
+            Regex regx = new Regex(@"@{([\w@$#]+)}");
+            //Regex regx = new Regex(@"@{^[a-zA-Z_][a-zA-Z0-9_]*$}");
             MatchCollection matches = regx.Matches(blueprintText);
             variables.Clear();
 

@@ -18,6 +18,7 @@ namespace CygSoft.Xess.UI.WinForms
         public MainForm()
         {
             InitializeComponent();
+            this.blueprintSyntaxBox.Document.SyntaxFile = "blueprint.syn";
             workSet.DataLoaded += new EventHandler(project_DataLoaded);
             dataGridView.DataSource = workSet.Table;
         }
@@ -26,12 +27,6 @@ namespace CygSoft.Xess.UI.WinForms
         {
             dataGridView.DataSource = workSet.Table;
             this.blueprintSyntaxBox.Document.Text = workSet.BlueprintText;
-        }
-
-        private void RefreshVariables()
-        {
-            variablesListCtrl.Items.Clear();
-            variablesListCtrl.Items.AddRange(workSet.Placeholders);
         }
 
         private void GenerateText()
@@ -69,23 +64,11 @@ namespace CygSoft.Xess.UI.WinForms
         private void menuUpdateVariables_Click(object sender, EventArgs e)
         {
             workSet.BlueprintText = blueprintSyntaxBox.Document.Text;
-            RefreshVariables();
         }
 
         private void menuGenerate_Click(object sender, EventArgs e)
         {
             GenerateText();
-        }
-
-        private void variablesListCtrl_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            int index = this.variablesListCtrl.IndexFromPoint(e.Location);
-
-            if (index != System.Windows.Forms.ListBox.NoMatches)
-            {
-                Clipboard.Clear();
-                Clipboard.SetText(this.variablesListCtrl.SelectedItem.ToString());
-            }
         }
 
         private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
