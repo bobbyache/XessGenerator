@@ -86,5 +86,13 @@ namespace CygSoft.Xess.UI.WinForms
         {
             OpenProject();
         }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabResults)
+            {
+                GenerateText();
+            }
+        }
     }
 }
