@@ -25,7 +25,7 @@ namespace CygSoft.Xess.UI.WinForms
         private void DisplayData()
         {
             dataGridView.DataSource = workSet.Table;
-            this.editorCtrl.Text = workSet.BlueprintText;
+            this.blueprintSyntaxBox.Document.Text = workSet.BlueprintText;
         }
 
         private void RefreshVariables()
@@ -37,7 +37,7 @@ namespace CygSoft.Xess.UI.WinForms
         private void GenerateText()
         {
             dataGridView.EndEdit();
-            resultsEditor.Text = workSet.GenerateText();
+            resultsSyntaxBox.Document.Text = workSet.GenerateText();
         }
 
         private void SaveProject()
@@ -68,7 +68,7 @@ namespace CygSoft.Xess.UI.WinForms
 
         private void menuUpdateVariables_Click(object sender, EventArgs e)
         {
-            workSet.BlueprintText = editorCtrl.Text;
+            workSet.BlueprintText = blueprintSyntaxBox.Document.Text;
             RefreshVariables();
         }
 
@@ -92,19 +92,6 @@ namespace CygSoft.Xess.UI.WinForms
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
                 columnMenu.Show(dataGridView, new Point(e.X, e.Y));
-        }
-
-        private void editorCtrl_KeyDown(object sender, KeyEventArgs e)
-        {
-            //http://stackoverflow.com/questions/5618162/detecting-if-paste-event-occurred-inside-a-rich-text-box
-            bool ctrlV = e.Modifiers == Keys.Control && e.KeyCode == Keys.V;
-            bool shiftIns = e.Modifiers == Keys.Shift && e.KeyCode == Keys.Insert;
-
-            if (ctrlV || shiftIns)
-            {
-                editorCtrl.SelectedText = Clipboard.GetText(TextDataFormat.UnicodeText);
-                e.Handled = true;
-            }
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)

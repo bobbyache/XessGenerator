@@ -40,18 +40,20 @@
             this.menuGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.splitContainerEditor = new System.Windows.Forms.SplitContainer();
-            this.editorCtrl = new System.Windows.Forms.RichTextBox();
+            this.blueprintSyntaxBox = new Alsing.Windows.Forms.SyntaxBoxControl();
+            this.resultsSyntaxDoc = new Alsing.SourceCode.SyntaxDocument(this.components);
             this.variablesListCtrl = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.resultsEditor = new System.Windows.Forms.RichTextBox();
             this.columnMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dateGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sAIDGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nULLGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.numericGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resultsSyntaxBox = new Alsing.Windows.Forms.SyntaxBoxControl();
+            this.syntaxDocument1 = new Alsing.SourceCode.SyntaxDocument(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -164,7 +166,7 @@
             // 
             // splitContainerEditor.Panel1
             // 
-            this.splitContainerEditor.Panel1.Controls.Add(this.editorCtrl);
+            this.splitContainerEditor.Panel1.Controls.Add(this.blueprintSyntaxBox);
             // 
             // splitContainerEditor.Panel2
             // 
@@ -173,17 +175,43 @@
             this.splitContainerEditor.SplitterDistance = 671;
             this.splitContainerEditor.TabIndex = 5;
             // 
-            // editorCtrl
+            // blueprintSyntaxBox
             // 
-            this.editorCtrl.AcceptsTab = true;
-            this.editorCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editorCtrl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editorCtrl.Location = new System.Drawing.Point(0, 0);
-            this.editorCtrl.Name = "editorCtrl";
-            this.editorCtrl.Size = new System.Drawing.Size(671, 311);
-            this.editorCtrl.TabIndex = 3;
-            this.editorCtrl.Text = "";
-            this.editorCtrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.editorCtrl_KeyDown);
+            this.blueprintSyntaxBox.ActiveView = Alsing.Windows.Forms.ActiveView.BottomRight;
+            this.blueprintSyntaxBox.AutoListPosition = null;
+            this.blueprintSyntaxBox.AutoListSelectedText = "a123";
+            this.blueprintSyntaxBox.AutoListVisible = false;
+            this.blueprintSyntaxBox.BackColor = System.Drawing.Color.White;
+            this.blueprintSyntaxBox.BorderStyle = Alsing.Windows.Forms.BorderStyle.None;
+            this.blueprintSyntaxBox.CopyAsRTF = false;
+            this.blueprintSyntaxBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.blueprintSyntaxBox.Document = this.resultsSyntaxDoc;
+            this.blueprintSyntaxBox.FontName = "Courier new";
+            this.blueprintSyntaxBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.blueprintSyntaxBox.InfoTipCount = 1;
+            this.blueprintSyntaxBox.InfoTipPosition = null;
+            this.blueprintSyntaxBox.InfoTipSelectedIndex = 1;
+            this.blueprintSyntaxBox.InfoTipVisible = false;
+            this.blueprintSyntaxBox.Location = new System.Drawing.Point(0, 0);
+            this.blueprintSyntaxBox.LockCursorUpdate = false;
+            this.blueprintSyntaxBox.Name = "blueprintSyntaxBox";
+            this.blueprintSyntaxBox.ShowScopeIndicator = false;
+            this.blueprintSyntaxBox.Size = new System.Drawing.Size(671, 311);
+            this.blueprintSyntaxBox.SmoothScroll = false;
+            this.blueprintSyntaxBox.SplitviewH = -4;
+            this.blueprintSyntaxBox.SplitviewV = -4;
+            this.blueprintSyntaxBox.TabGuideColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.blueprintSyntaxBox.TabIndex = 0;
+            this.blueprintSyntaxBox.Text = "syntaxBoxControl1";
+            this.blueprintSyntaxBox.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
+            // 
+            // resultsSyntaxDoc
+            // 
+            this.resultsSyntaxDoc.Lines = new string[] {
+        ""};
+            this.resultsSyntaxDoc.MaxUndoBufferSize = 1000;
+            this.resultsSyntaxDoc.Modified = false;
+            this.resultsSyntaxDoc.UndoStep = 0;
             // 
             // variablesListCtrl
             // 
@@ -230,7 +258,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.resultsEditor);
+            this.tabPage2.Controls.Add(this.resultsSyntaxBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -238,15 +266,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Generated Text";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // resultsEditor
-            // 
-            this.resultsEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultsEditor.Location = new System.Drawing.Point(3, 3);
-            this.resultsEditor.Name = "resultsEditor";
-            this.resultsEditor.Size = new System.Drawing.Size(905, 159);
-            this.resultsEditor.TabIndex = 0;
-            this.resultsEditor.Text = "";
             // 
             // columnMenu
             // 
@@ -282,7 +301,45 @@
             this.numericGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.numericGeneratorToolStripMenuItem.Text = "Numeric Generator...";
             // 
-            // Form1
+            // resultsSyntaxBox
+            // 
+            this.resultsSyntaxBox.ActiveView = Alsing.Windows.Forms.ActiveView.BottomRight;
+            this.resultsSyntaxBox.AutoListPosition = null;
+            this.resultsSyntaxBox.AutoListSelectedText = "";
+            this.resultsSyntaxBox.AutoListVisible = false;
+            this.resultsSyntaxBox.BackColor = System.Drawing.Color.White;
+            this.resultsSyntaxBox.BorderStyle = Alsing.Windows.Forms.BorderStyle.None;
+            this.resultsSyntaxBox.CopyAsRTF = false;
+            this.resultsSyntaxBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsSyntaxBox.Document = this.syntaxDocument1;
+            this.resultsSyntaxBox.FontName = "Courier new";
+            this.resultsSyntaxBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.resultsSyntaxBox.InfoTipCount = 1;
+            this.resultsSyntaxBox.InfoTipPosition = null;
+            this.resultsSyntaxBox.InfoTipSelectedIndex = 0;
+            this.resultsSyntaxBox.InfoTipVisible = false;
+            this.resultsSyntaxBox.Location = new System.Drawing.Point(3, 3);
+            this.resultsSyntaxBox.LockCursorUpdate = false;
+            this.resultsSyntaxBox.Name = "resultsSyntaxBox";
+            this.resultsSyntaxBox.ShowScopeIndicator = false;
+            this.resultsSyntaxBox.Size = new System.Drawing.Size(905, 159);
+            this.resultsSyntaxBox.SmoothScroll = false;
+            this.resultsSyntaxBox.SplitviewH = -4;
+            this.resultsSyntaxBox.SplitviewV = -4;
+            this.resultsSyntaxBox.TabGuideColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.resultsSyntaxBox.TabIndex = 0;
+            this.resultsSyntaxBox.Text = "syntaxBoxControl1";
+            this.resultsSyntaxBox.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
+            // 
+            // syntaxDocument1
+            // 
+            this.syntaxDocument1.Lines = new string[] {
+        ""};
+            this.syntaxDocument1.MaxUndoBufferSize = 1000;
+            this.syntaxDocument1.Modified = false;
+            this.syntaxDocument1.UndoStep = 0;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -290,7 +347,7 @@
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Xess Generator - Manual Tool";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -317,13 +374,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.SplitContainer splitContainerMain;
         private System.Windows.Forms.SplitContainer splitContainerEditor;
-        private System.Windows.Forms.RichTextBox editorCtrl;
         private System.Windows.Forms.ListBox variablesListCtrl;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.RichTextBox resultsEditor;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuUpdateVariables;
@@ -337,6 +392,10 @@
         private System.Windows.Forms.ToolStripMenuItem mnuQuit;
         private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
+        private Alsing.Windows.Forms.SyntaxBoxControl blueprintSyntaxBox;
+        private Alsing.SourceCode.SyntaxDocument resultsSyntaxDoc;
+        private Alsing.Windows.Forms.SyntaxBoxControl resultsSyntaxBox;
+        private Alsing.SourceCode.SyntaxDocument syntaxDocument1;
     }
 }
 
