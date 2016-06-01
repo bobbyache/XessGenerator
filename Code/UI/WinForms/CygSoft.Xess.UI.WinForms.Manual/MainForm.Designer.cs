@@ -156,6 +156,7 @@
             this.blueprintSyntaxBox.TabIndex = 1;
             this.blueprintSyntaxBox.Text = "syntaxBoxControl1";
             this.blueprintSyntaxBox.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
+            this.blueprintSyntaxBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.blueprintSyntaxBox_KeyDown);
             this.blueprintSyntaxBox.Leave += new System.EventHandler(this.blueprintSyntaxBox_Leave);
             // 
             // resultsSyntaxDoc
@@ -293,7 +294,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Xess Generator - Manual Tool";
+            this.Text = "Xess Generator - Manual Tool (ALT + V to convert to Variable)";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);

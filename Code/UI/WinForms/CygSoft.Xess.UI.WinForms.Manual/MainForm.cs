@@ -100,5 +100,15 @@ namespace CygSoft.Xess.UI.WinForms
                 this.Close();
             }
         }
+
+        private void blueprintSyntaxBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Control && e.KeyCode == Keys.Alt && e.KeyCode == Keys.V)
+            if (e.KeyCode == Keys.V && e.Alt)
+            {
+                //MessageBox.Show("Pressed");
+                blueprintSyntaxBox.Selection.Text = "@{" + blueprintSyntaxBox.Selection.Text + "}";
+            }
+        }
     }
 }
