@@ -44,11 +44,6 @@
             this.tabResults = new System.Windows.Forms.TabPage();
             this.resultsSyntaxBox = new Alsing.Windows.Forms.SyntaxBoxControl();
             this.syntaxDocument1 = new Alsing.SourceCode.SyntaxDocument(this.components);
-            this.columnMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dateGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sAIDGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nULLGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.numericGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -58,7 +53,6 @@
             this.tabGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tabResults.SuspendLayout();
-            this.columnMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -199,7 +193,6 @@
             this.dataGridView.Size = new System.Drawing.Size(905, 279);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEnter);
-            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ColumnHeaderMouseClick);
             // 
             // tabResults
             // 
@@ -251,40 +244,6 @@
             this.syntaxDocument1.Modified = false;
             this.syntaxDocument1.UndoStep = 0;
             // 
-            // columnMenu
-            // 
-            this.columnMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dateGeneratorToolStripMenuItem,
-            this.sAIDGeneratorToolStripMenuItem,
-            this.nULLGeneratorToolStripMenuItem,
-            this.numericGeneratorToolStripMenuItem});
-            this.columnMenu.Name = "columnMenu";
-            this.columnMenu.Size = new System.Drawing.Size(185, 92);
-            // 
-            // dateGeneratorToolStripMenuItem
-            // 
-            this.dateGeneratorToolStripMenuItem.Name = "dateGeneratorToolStripMenuItem";
-            this.dateGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.dateGeneratorToolStripMenuItem.Text = "Date Generator...";
-            // 
-            // sAIDGeneratorToolStripMenuItem
-            // 
-            this.sAIDGeneratorToolStripMenuItem.Name = "sAIDGeneratorToolStripMenuItem";
-            this.sAIDGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.sAIDGeneratorToolStripMenuItem.Text = "SA ID Generator";
-            // 
-            // nULLGeneratorToolStripMenuItem
-            // 
-            this.nULLGeneratorToolStripMenuItem.Name = "nULLGeneratorToolStripMenuItem";
-            this.nULLGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.nULLGeneratorToolStripMenuItem.Text = "NULL Generator";
-            // 
-            // numericGeneratorToolStripMenuItem
-            // 
-            this.numericGeneratorToolStripMenuItem.Name = "numericGeneratorToolStripMenuItem";
-            this.numericGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.numericGeneratorToolStripMenuItem.Text = "Numeric Generator...";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,7 +264,6 @@
             this.tabGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tabResults.ResumeLayout(false);
-            this.columnMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,11 +278,6 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.TabPage tabResults;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip columnMenu;
-        private System.Windows.Forms.ToolStripMenuItem dateGeneratorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sAIDGeneratorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nULLGeneratorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem numericGeneratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuQuit;
         private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;

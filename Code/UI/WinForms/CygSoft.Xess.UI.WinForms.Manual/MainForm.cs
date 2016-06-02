@@ -14,6 +14,7 @@ namespace CygSoft.Xess.UI.WinForms
     public partial class MainForm : Form
     {
         private WorkSet workSet = new WorkSet();
+        private bool loadingData = false;
 
         public MainForm()
         {
@@ -47,7 +48,9 @@ namespace CygSoft.Xess.UI.WinForms
             DialogData dialogData = ApplicationDialogs.Open(this);
             if (dialogData.Result == System.Windows.Forms.DialogResult.OK)
             {
+                loadingData = true;
                 workSet.LoadData(dialogData.FilePath);
+                loadingData = false;
             }
         }
 
@@ -58,13 +61,8 @@ namespace CygSoft.Xess.UI.WinForms
 
         private void dataGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView.BeginEdit(false);
-        }
-
-        private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-                columnMenu.Show(dataGridView, new Point(e.X, e.Y));
+            if (!loadingData)
+                dataGridView.BeginEdit(false);
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
