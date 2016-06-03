@@ -108,5 +108,10 @@ namespace CygSoft.Xess.UI.WinForms
                 blueprintSyntaxBox.Selection.Text = "@{" + blueprintSyntaxBox.Selection.Text + "}";
             }
         }
+
+        private void dataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            // http://stackoverflow.com/questions/4077260/copy-and-paste-multiple-cells-within-datagridview
+        }
     }
 }

@@ -193,6 +193,7 @@
             this.dataGridView.Size = new System.Drawing.Size(905, 279);
             this.dataGridView.TabIndex = 1;
             this.dataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEnter);
+            this.dataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyDown);
             // 
             // tabResults
             // 
