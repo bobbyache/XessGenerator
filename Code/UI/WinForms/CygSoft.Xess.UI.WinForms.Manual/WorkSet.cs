@@ -36,6 +36,11 @@ namespace CygSoft.Xess.UI.WinForms
             return generator.GenerateText(this.dataMatrix.Table, this.dataMatrix.BlueprintText, this.dataMatrix.Variables);
         }
 
+        public void RemoveOrphanedColumns()
+        {
+            dataMatrix.RemoveOrphanedColumns();
+        }
+
         public void LoadData(string filePath)
         {
             this.dataMatrix.LoadData(filePath);

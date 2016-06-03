@@ -15,6 +15,7 @@ namespace CygSoft.Xess.UI.WinForms
     {
         private WorkSet workSet = new WorkSet();
         private bool loadingData = false;
+        private bool selectAllInCell = true;
 
         public MainForm()
         {
@@ -61,8 +62,10 @@ namespace CygSoft.Xess.UI.WinForms
 
         private void dataGridView_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (!loadingData)
-                dataGridView.BeginEdit(false);
+            if (loadingData)
+                dataGridView.BeginEdit(true);
+            else
+                dataGridView.BeginEdit(selectAllInCell);
         }
 
         private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,6 +115,33 @@ namespace CygSoft.Xess.UI.WinForms
         private void dataGridView_KeyDown(object sender, KeyEventArgs e)
         {
             // http://stackoverflow.com/questions/4077260/copy-and-paste-multiple-cells-within-datagridview
+            // http://www.codeproject.com/Articles/36850/DataGridView-Copy-and-Paste
+
+        }
+
+
+
+        private void mnuCellSelectAll_Click(object sender, EventArgs e)
+        {
+            selectAllInCell = mnuCellSelectAll.Checked;
+        }
+
+        private void mnuGridClear_Click(object sender, EventArgs e)
+        {
+            workSet.Table.Rows.Clear();
+        }
+
+        private void mnuGridClearSelectedRows_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in this.dataGridView.SelectedRows)
+            {
+                dataGridView.Rows.RemoveAt(item.Index);
+            }  
+        }
+
+        private void mnuGridRemoveOrphanColumns_Click(object sender, EventArgs e)
+        {
+            workSet.RemoveOrphanedColumns();
         }
     }
 }

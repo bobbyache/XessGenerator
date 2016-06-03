@@ -37,6 +37,14 @@ namespace CygSoft.Xess.UI.WinForms
             }
         }
 
+        public bool Exists(string columnName)
+        {
+            if (variables.ContainsKey(columnName))
+                return true;
+            else
+                return false;
+        }
+
         public void Update(string blueprintText)
         {
             //Regex regx = new Regex(@"@{.*?}");

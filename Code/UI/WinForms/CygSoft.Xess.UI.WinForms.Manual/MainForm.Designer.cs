@@ -35,6 +35,8 @@
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCellSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.blueprintSyntaxBox = new Alsing.Windows.Forms.SyntaxBoxControl();
             this.resultsSyntaxDoc = new Alsing.SourceCode.SyntaxDocument(this.components);
@@ -44,6 +46,11 @@
             this.tabResults = new System.Windows.Forms.TabPage();
             this.resultsSyntaxBox = new Alsing.Windows.Forms.SyntaxBoxControl();
             this.syntaxDocument1 = new Alsing.SourceCode.SyntaxDocument(this.components);
+            this.mnuGrid = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGridClearSelectedRows = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuGridRemoveOrphanColumns = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -58,7 +65,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.mnuGrid,
+            this.mnuSettings});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(919, 24);
@@ -101,6 +110,24 @@
             this.mnuQuit.Size = new System.Drawing.Size(152, 22);
             this.mnuQuit.Text = "Quit";
             this.mnuQuit.Click += new System.EventHandler(this.mnuQuit_Click);
+            // 
+            // mnuSettings
+            // 
+            this.mnuSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCellSelectAll});
+            this.mnuSettings.Name = "mnuSettings";
+            this.mnuSettings.Size = new System.Drawing.Size(61, 20);
+            this.mnuSettings.Text = "Settings";
+            // 
+            // mnuCellSelectAll
+            // 
+            this.mnuCellSelectAll.Checked = true;
+            this.mnuCellSelectAll.CheckOnClick = true;
+            this.mnuCellSelectAll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuCellSelectAll.Name = "mnuCellSelectAll";
+            this.mnuCellSelectAll.Size = new System.Drawing.Size(161, 22);
+            this.mnuCellSelectAll.Text = "Select Entire Cell";
+            this.mnuCellSelectAll.Click += new System.EventHandler(this.mnuCellSelectAll_Click);
             // 
             // splitContainerMain
             // 
@@ -245,6 +272,43 @@
             this.syntaxDocument1.Modified = false;
             this.syntaxDocument1.UndoStep = 0;
             // 
+            // mnuGrid
+            // 
+            this.mnuGrid.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuGridClear,
+            this.mnuGridClearSelectedRows,
+            this.toolStripMenuItem1,
+            this.mnuGridRemoveOrphanColumns});
+            this.mnuGrid.Name = "mnuGrid";
+            this.mnuGrid.Size = new System.Drawing.Size(41, 20);
+            this.mnuGrid.Text = "Grid";
+            // 
+            // mnuGridClear
+            // 
+            this.mnuGridClear.Name = "mnuGridClear";
+            this.mnuGridClear.Size = new System.Drawing.Size(220, 22);
+            this.mnuGridClear.Text = "Clear";
+            this.mnuGridClear.Click += new System.EventHandler(this.mnuGridClear_Click);
+            // 
+            // mnuGridClearSelectedRows
+            // 
+            this.mnuGridClearSelectedRows.Name = "mnuGridClearSelectedRows";
+            this.mnuGridClearSelectedRows.Size = new System.Drawing.Size(220, 22);
+            this.mnuGridClearSelectedRows.Text = "Clear Selected Rows";
+            this.mnuGridClearSelectedRows.Click += new System.EventHandler(this.mnuGridClearSelectedRows_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(217, 6);
+            // 
+            // mnuGridRemoveOrphanColumns
+            // 
+            this.mnuGridRemoveOrphanColumns.Name = "mnuGridRemoveOrphanColumns";
+            this.mnuGridRemoveOrphanColumns.Size = new System.Drawing.Size(220, 22);
+            this.mnuGridRemoveOrphanColumns.Text = "Remove orphaned columns";
+            this.mnuGridRemoveOrphanColumns.Click += new System.EventHandler(this.mnuGridRemoveOrphanColumns_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +351,13 @@
         private Alsing.Windows.Forms.SyntaxBoxControl resultsSyntaxBox;
         private Alsing.SourceCode.SyntaxDocument syntaxDocument1;
         private Alsing.Windows.Forms.SyntaxBoxControl blueprintSyntaxBox;
+        private System.Windows.Forms.ToolStripMenuItem mnuSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuCellSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem mnuGrid;
+        private System.Windows.Forms.ToolStripMenuItem mnuGridClear;
+        private System.Windows.Forms.ToolStripMenuItem mnuGridClearSelectedRows;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuGridRemoveOrphanColumns;
     }
 }
 

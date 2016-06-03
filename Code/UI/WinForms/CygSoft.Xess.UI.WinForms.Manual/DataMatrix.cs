@@ -49,6 +49,21 @@ namespace CygSoft.Xess.UI.WinForms
             }
         }
 
+        public void RemoveOrphanedColumns()
+        {
+            List<DataColumn> orphanedColumns = new List<DataColumn>();
+
+            foreach (DataColumn column in dataTable.Columns)
+            {
+
+                if (!variables.Exists(column.ColumnName))
+                    orphanedColumns.Add(column);
+            }
+
+            foreach (DataColumn column in orphanedColumns)
+                dataTable.Columns.Remove(column);
+        }
+
         public void LoadData(string filePath)
         {
             Empty();
