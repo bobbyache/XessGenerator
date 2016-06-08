@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using CygSoft.Xess.Infrastructure;
 using CygSoft.Xess.App;
 using CygSoft.Xess.UI.WinForms.GlobalSettings;
+using System.Text;
 
 
 namespace CygSoft.Xess.UI.WinForms.Forms
@@ -102,8 +103,12 @@ namespace CygSoft.Xess.UI.WinForms.Forms
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            XessApplication.UpdateTemplates(this.templatesList);
-            this.Close();
+            if (ValidateAllTemplates())
+            {
+                XessApplication.UpdateTemplates(this.templatesList);
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -112,6 +117,37 @@ namespace CygSoft.Xess.UI.WinForms.Forms
         }
 
         #endregion
+
+        private bool ValidateAllTemplates()
+        {
+            StringBuilder issueBuilder = new StringBuilder();
+
+            //commented out code should be unreachable...
+
+            foreach (ITemplate template in this.templatesList)
+            {
+                //if (string.IsNullOrEmpty(template.Title))
+                //    issueBuilder.AppendLine(string.Format(" - Template: {0} - has not been supplied with a title.", template.Id));
+                if (string.IsNullOrEmpty(template.Syntax))
+                    issueBuilder.AppendLine(string.Format(" - Template: {0} - has not been supplied with a syntax.", template.Title));
+                //foreach (ITemplateSection templateSection in template.TemplateSectionList)
+                //{
+                //    if (string.IsNullOrEmpty(templateSection.Title))
+                //        issueBuilder.AppendLine(string.Format(" - Template {1} Section: {0} - has not been supplied with a title.", 
+                //            string.IsNullOrEmpty(template.Title) ? "Unknown Template" : template.Title, templateSection.Id));
+                //}
+            }
+
+            if (issueBuilder.Length > 0)
+            {
+                MessageBox.Show(this,
+                    string.Format("Issues with the current template collection must be fixed before the user can save:\n{0}", issueBuilder.ToString()),
+                    ConfigSettings.ApplicationTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return false;
+            }
+            return true;
+        }
 
         private void TemplateManager_FormClosing(object sender, FormClosingEventArgs e)
         {
