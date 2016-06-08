@@ -139,6 +139,23 @@ namespace CygSoft.Xess.UI.WinForms.Controls
             cboSyntax.Items.AddRange(syntaxList);
         }
 
+        private bool ValidateFields()
+        {
+            if (txtTitle.Text.Trim() == "")
+            {
+                MessageBox.Show(this, CommonConstants.DialogMessages.NoInputValueForMandatoryField("Title"), ConfigSettings.ApplicationTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            if (cboSyntax.SelectedItem == null)
+            {
+                MessageBox.Show(this, CommonConstants.DialogMessages.NoInputValueForMandatoryField("Syntax"), ConfigSettings.ApplicationTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             ChangeState(TemplateEditorStateEnum.Editing);
@@ -146,15 +163,18 @@ namespace CygSoft.Xess.UI.WinForms.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.currentTemplate.Title = txtTitle.Text;
-            this.currentTemplate.FilePath = fileBrowseBox.FilePath;
-            this.currentTemplate.Description = txtDescription.Text;
-            this.currentTemplate.Syntax = cboSyntax.SelectedItem.ToString();
+            if (ValidateFields())
+            {
+                this.currentTemplate.Title = txtTitle.Text;
+                this.currentTemplate.FilePath = fileBrowseBox.FilePath;
+                this.currentTemplate.Description = txtDescription.Text;
+                this.currentTemplate.Syntax = cboSyntax.SelectedItem.ToString();
 
-            ChangeState(TemplateEditorStateEnum.ReadOnly);
+                ChangeState(TemplateEditorStateEnum.ReadOnly);
 
-            if (TemplateSaved != null)
-                TemplateSaved(this, new EventArgs());
+                if (TemplateSaved != null)
+                    TemplateSaved(this, new EventArgs());
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

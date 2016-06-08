@@ -32,6 +32,8 @@ namespace CygSoft.Xess.UI.WinForms.Controls
 
             ClearDatasourceList();
             CreateDatasourceList();
+
+            this.ToolTipText = this.DropDownItems.Count == 0 ? "No data source exists for this template." : "Generate template";
         }
 
         private void CreateDatasourceList()

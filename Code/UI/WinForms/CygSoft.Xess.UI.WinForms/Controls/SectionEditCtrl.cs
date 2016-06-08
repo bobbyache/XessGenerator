@@ -45,25 +45,39 @@ namespace CygSoft.Xess.UI.WinForms.Controls
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            this.currentSection.Title = txtTitle.Text;
-            this.currentSection.Description = txtDescription.Text;
-            if (cboDataSource.SelectedItem != null)
+            if (ValidateFields())
             {
-                IDataSource dataSource = XessApplication.GetDataSourceById((cboDataSource.SelectedItem as IDataSource).Id);
-                this.currentSection.ChangeDataSource(dataSource);
+                this.currentSection.Title = txtTitle.Text;
+                this.currentSection.Description = txtDescription.Text;
+                if (cboDataSource.SelectedItem != null)
+                {
+                    IDataSource dataSource = XessApplication.GetDataSourceById((cboDataSource.SelectedItem as IDataSource).Id);
+                    this.currentSection.ChangeDataSource(dataSource);
+                }
+                else
+                {
+                    this.currentSection.ChangeDataSource(null);
+                }
+                this.currentSection.BodyText = blueprintEditor.BodyText;
+                this.currentSection.FooterText = blueprintEditor.FooterText;
+                this.currentSection.HeaderText = blueprintEditor.HeaderText;
+
+                ChangeState(TemplateEditorStateEnum.ReadOnly);
+
+                if (SectionSaved != null)
+                    SectionSaved(this, new EventArgs());
             }
-            else
+        }
+
+        private bool ValidateFields()
+        {
+            if (txtTitle.Text.Trim() == "")
             {
-                this.currentSection.ChangeDataSource(null);
+                MessageBox.Show(this, CommonConstants.DialogMessages.NoInputValueForMandatoryField("Title"), ConfigSettings.ApplicationTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
             }
-            this.currentSection.BodyText = blueprintEditor.BodyText;
-            this.currentSection.FooterText = blueprintEditor.FooterText;
-            this.currentSection.HeaderText = blueprintEditor.HeaderText;
-
-            ChangeState(TemplateEditorStateEnum.ReadOnly);
-
-            if (SectionSaved != null)
-                SectionSaved(this, new EventArgs());
+            return true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
