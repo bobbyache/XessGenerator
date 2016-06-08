@@ -334,6 +334,7 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             }
 
             outputTextbox.Document.Text = text;
+            outputTextbox.GotoLine(0);
             progressConsole.AppendConsoleText("", Color.Black, false);
         }
 
