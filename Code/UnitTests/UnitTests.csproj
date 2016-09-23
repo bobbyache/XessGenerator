@@ -84,10 +84,6 @@
       <Project>{bd1518fe-5692-4ab8-b44d-537ceec18cd1}</Project>
       <Name>CygSoft.Xess.ProjectFile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Components\CygSoft.Xess.Infrastructure.ReplaceEngine\CygSoft.Xess.Infrastructure.ReplaceEngine.csproj">
-      <Project>{47971df5-e69c-410c-b3e3-f6767f7209c4}</Project>
-      <Name>CygSoft.Xess.Infrastructure.ReplaceEngine</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />

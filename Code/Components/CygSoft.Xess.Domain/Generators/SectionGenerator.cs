@@ -53,7 +53,8 @@ namespace CygSoft.Xess.Domain.Generators
 
             foreach (DataColumn column in dataTable.Columns)
             {
-                compiler.CreateAutoInput("@" + column.ColumnName);
+                string symbol = compiler.TextToSymbol(column.ColumnName);
+                compiler.CreateAutoInput(symbol, column.ColumnName, "Column: " + column.ColumnName);
             }
 
             // for each row in the table...

@@ -8,9 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using Alsing.SourceCode;
 using CygSoft.Xess.Infrastructure;
-using CygSoft.Xess.Infrastructure.ReplaceEngine;
 using CygSoft.Xess.App;
 using CygSoft.Xess.UI.WinForms.GlobalSettings;
+using CygSoft.Qik.LanguageEngine.Infrastructure;
 
 namespace CygSoft.Xess.UI.WinForms
 {
@@ -23,7 +23,7 @@ namespace CygSoft.Xess.UI.WinForms
             public const string Body = "Body";
         }
 
-        private SubstitutionExpression[] placeHolders;
+        private ISymbolInfo[] symbolInfoListing;
         private string selectedPart;
 
         public BlueprintEditorControl()
@@ -34,29 +34,32 @@ namespace CygSoft.Xess.UI.WinForms
             btnOptions.Image = ResourceHandler.ToolbarIcon(ResourceHandler.ToolbarImages.Options);
         }
 
-        public void SetPlaceholders(SubstitutionExpression[] placeHolders)
+        public void SetPlaceholders(ISymbolInfo[] symbolInfoListing)
         {
-            this.placeHolders = placeHolders;
+            this.symbolInfoListing = symbolInfoListing;
             SetPlaceholderMenus();
         }
 
         public void ClearPlaceholders()
         {
-            this.placeHolders = null;
+            this.symbolInfoListing = null;
             SetPlaceholderMenus();
         }
 
         private void SetPlaceholderMenus()
         {
             syntaxBoxControl1.AutoListClear();
-            if (this.placeHolders != null)
+            if (this.symbolInfoListing != null)
             {
                 // set up syntax box placeholders.
-                foreach (SubstitutionExpression expression in this.placeHolders)
+                foreach (ISymbolInfo symbolInfo in this.symbolInfoListing)
                 {
-                    syntaxBoxControl1.AutoListAdd(expression.ActionIdentifier, expression.ActionIdentifier, expression.ActionIdentifier, 0);
-                    syntaxBoxControl1.AutoListAdd(string.Format("{0} ({1})", expression.ActionIdentifier, expression.OutputPlaceholder), 
-                        expression.OutputPlaceholder, expression.OutputPlaceholder, 4);
+                    //syntaxBoxControl1.AutoListAdd(expression.ActionIdentifier, expression.ActionIdentifier, expression.ActionIdentifier, 0);
+                    syntaxBoxControl1.AutoListAdd(symbolInfo.Title, symbolInfo.Title, symbolInfo.Description, 0);
+                    //syntaxBoxControl1.AutoListAdd(string.Format("{0} ({1})", expression.ActionIdentifier, expression.OutputPlaceholder), 
+                    //    expression.OutputPlaceholder, expression.OutputPlaceholder, 4);
+                    syntaxBoxControl1.AutoListAdd(string.Format("{0} ({1})", symbolInfo.Title, symbolInfo.Placeholder), 
+                        symbolInfo.Placeholder, symbolInfo.Description, 4);
                 }
             }
         }
@@ -180,10 +183,10 @@ namespace CygSoft.Xess.UI.WinForms
 
         private void syntaxBoxControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (this.placeHolders == null)
+            if (this.symbolInfoListing == null)
                 return;
 
-            if (!this.syntaxBoxControl1.ReadOnly && this.placeHolders.Length > 0)
+            if (!this.syntaxBoxControl1.ReadOnly && this.symbolInfoListing.Length > 0)
             {
                 if (e.KeyData == (Keys.Shift | Keys.F8) || e.KeyData == Keys.OemPeriod || e.KeyData == Keys.F8)
                 {

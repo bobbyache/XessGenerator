@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CygSoft.Qik.LanguageEngine, Version=1.0.1.29920, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\CygSoft.Qik.LanguageEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CygSoft.Qik.LanguageEngine.Infrastructure, Version=1.0.1.29920, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\External\CygSoft.Qik.LanguageEngine.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,10 +66,6 @@
     <ProjectReference Include="..\CygSoft.Xess.ProjectFile\CygSoft.Xess.ProjectFile.csproj">
       <Project>{bd1518fe-5692-4ab8-b44d-537ceec18cd1}</Project>
       <Name>CygSoft.Xess.ProjectFile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CygSoft.Xess.Infrastructure.ReplaceEngine\CygSoft.Xess.Infrastructure.ReplaceEngine.csproj">
-      <Project>{47971df5-e69c-410c-b3e3-f6767f7209c4}</Project>
-      <Name>CygSoft.Xess.Infrastructure.ReplaceEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

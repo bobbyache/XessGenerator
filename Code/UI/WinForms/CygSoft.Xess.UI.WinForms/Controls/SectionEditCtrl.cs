@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using CygSoft.Xess.Infrastructure;
 using CygSoft.Xess.App;
 using CygSoft.Xess.UI.WinForms.GlobalSettings;
-using CygSoft.Xess.Infrastructure.ReplaceEngine;
+using CygSoft.Qik.LanguageEngine.Infrastructure;
 
 namespace CygSoft.Xess.UI.WinForms.Controls
 {
@@ -244,8 +244,8 @@ namespace CygSoft.Xess.UI.WinForms.Controls
 
         private void DisplayPlaceholders()
         {
-            SubstitutionExpression[] substitutions = XessApplication.GeneratePlaceholders(templateDataCtrl1.ColumnList);
-            blueprintEditor.SetPlaceholders(substitutions);
+            ISymbolInfo[] symbolInfoListing = XessApplication.GeneratePlaceholders(templateDataCtrl1.ColumnList);
+            blueprintEditor.SetPlaceholders(symbolInfoListing);
         }
     }
 }

@@ -1,11 +1,12 @@
-﻿using CygSoft.Xess.Domain.Generators;
+﻿using CygSoft.Qik.LanguageEngine;
+using CygSoft.Qik.LanguageEngine.Infrastructure;
+using CygSoft.Xess.Domain.Generators;
 using CygSoft.Xess.Domain.Templates;
 using CygSoft.Xess.Infrastructure;
 using CygSoft.Xess.Infrastructure.DataSources;
 using CygSoft.Xess.Infrastructure.DataSources.Excel;
 using CygSoft.Xess.Infrastructure.DataSources.SqlServer;
 using CygSoft.Xess.Infrastructure.DataSources.WinFolder;
-using CygSoft.Xess.Infrastructure.ReplaceEngine;
 using CygSoft.Xess.ProjectFile;
 using System;
 using System.Collections.Generic;
@@ -119,11 +120,18 @@ namespace CygSoft.Xess.App
             fileManager.UpdateTemplates(templates);
         }
 
-        public static SubstitutionExpression[] GeneratePlaceholders(string[] columnList)
+        public static ISymbolInfo[] GeneratePlaceholders(string[] columnList)
         {
-            ReplaceEngine engine = new ReplaceEngine(new SubstitutionMask(PlaceholderPrefix, PlaceholderPostfix));
-            engine.GenerateDefaultActions(columnList);
-            return engine.GetSubstitutionPlaceholders();
+            List<ISymbolInfo> symbolInfoList = new List<ISymbolInfo>();
+            ICompiler compiler = new Compiler();
+
+            foreach (string column in columnList)
+            {
+                string symbol = compiler.TextToSymbol(column);
+                compiler.CreateAutoInput(symbol, column, "Column: " + column);
+            }
+
+            return compiler.GetSymbolInfoSet(columnList.Select(c => "@" + c).ToArray());
         }
 
         /// <summary>
@@ -197,6 +205,9 @@ namespace CygSoft.Xess.App
             newTemplate.Title = "New Template";
             return newTemplate;
         }
+
+        public static ICompiler Compiler { get { return new Compiler(); } }
+        public static IGenerator Generator { get { return new Generator(); } }
 
         private static void dataSourceGenerator_PercentComplete(object sender, PercentCompleteEventArgs e)
         {

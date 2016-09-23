@@ -40,6 +40,10 @@
     <ApplicationIcon>XessGenerator.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CygSoft.Qik.LanguageEngine.Infrastructure, Version=1.0.1.28923, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\External\CygSoft.Qik.LanguageEngine.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="CygX1.UI.WinForms.RecentFileMenu, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\External\CygX1.UI.WinForms.RecentFileMenu.dll</HintPath>
@@ -312,10 +316,6 @@
     <ProjectReference Include="..\..\..\Components\CygSoft.Xess.Infrastructure.DataSources\CygSoft.Xess.Infrastructure.DataSources.csproj">
       <Project>{ca79ce41-7346-45fc-b73d-8f50cd5586f4}</Project>
       <Name>CygSoft.Xess.Infrastructure.DataSources</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Components\CygSoft.Xess.Infrastructure.ReplaceEngine\CygSoft.Xess.Infrastructure.ReplaceEngine.csproj">
-      <Project>{47971df5-e69c-410c-b3e3-f6767f7209c4}</Project>
-      <Name>CygSoft.Xess.Infrastructure.ReplaceEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
