@@ -1,5 +1,6 @@
-﻿using CygSoft.Xess.Infrastructure;
-using CygSoft.Xess.Infrastructure.ReplaceEngine;
+﻿using CygSoft.Qik.LanguageEngine;
+using CygSoft.Qik.LanguageEngine.Infrastructure;
+using CygSoft.Xess.Infrastructure;
 using System;
 using System.Data;
 
@@ -11,16 +12,19 @@ namespace CygSoft.Xess.Domain.Generators
     internal class SectionGenerator
     {
         private ITemplateSection templateSection;
-        private SubstitutionMask substitutionMask;
 
+        private ICompiler compiler = new CygSoft.Qik.LanguageEngine.Compiler();
+        private IGenerator generator = new Generator();
+        
         public SectionGenerator(ITemplateSection templateSection, string placeholderPrefix, string placeholderPostfix)
         {
             this.templateSection = templateSection;
-            this.substitutionMask = new SubstitutionMask(placeholderPrefix, placeholderPostfix);
         }
 
         public string Generate()
         {
+            SetupCompiler();
+
             // generate header, body, and footer text.
             string bodyText = string.Empty;
             string headerText = templateSection.HeaderText;
@@ -33,13 +37,24 @@ namespace CygSoft.Xess.Domain.Generators
             return headerText + bodyText + footerText;
         }
 
+        private void SetupCompiler()
+        {
+            string scriptText = "";
+
+            if (!string.IsNullOrEmpty(scriptText))
+                compiler.Compile(scriptText);
+        }
+
         private string GenerateData()
         {
             string generatedText = string.Empty;
-            ReplaceEngine replaceEngine = new ReplaceEngine(this.substitutionMask);
 
             DataTable dataTable = templateSection.GetData();
-            replaceEngine.GenerateDefaultActions(dataTable);
+
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                compiler.CreateAutoInput("@" + column.ColumnName);
+            }
 
             // for each row in the table...
             for (int y = 0; y < dataTable.Rows.Count; y++)
@@ -48,17 +63,10 @@ namespace CygSoft.Xess.Domain.Generators
 
                 foreach (DataColumn column in dataTable.Columns)
                 {
-                    // create the sustitution data + placeholder data.
-                    SubstitutionExpression[] exps = replaceEngine.CreateSubstitutions(column.ColumnName, 
-                        Convert.ToString(dataTable.Rows[y][column]));
-
-                    // subsitute... replace...
-                    foreach (SubstitutionExpression exp in exps)
-                        blueprintCopy = blueprintCopy.Replace(exp.OutputPlaceholder, exp.OutputData);
-
+                    compiler.Input("@" + column.ColumnName, Convert.ToString(dataTable.Rows[y][column]));
                 }
 
-                generatedText += blueprintCopy;
+                generatedText += generator.Generate(compiler, blueprintCopy);
             }
 
             return generatedText;
