@@ -40,6 +40,10 @@
     <ApplicationIcon>XessGenerator.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alsing.SyntaxBox, Version=1.4.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Alsing.SyntaxBox.1.4.10.1\lib\net45\Alsing.SyntaxBox.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CygSoft.Qik.LanguageEngine.Infrastructure, Version=1.0.1.28923, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\External\CygSoft.Qik.LanguageEngine.Infrastructure.dll</HintPath>
@@ -49,10 +53,6 @@
       <HintPath>..\..\..\External\CygX1.UI.WinForms.RecentFileMenu.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="SyntaxBox, Version=1.4.10.36885, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\External\SyntaxBox.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -255,6 +255,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

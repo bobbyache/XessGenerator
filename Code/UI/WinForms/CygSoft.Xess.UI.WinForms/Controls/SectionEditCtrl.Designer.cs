@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SectionEditCtrl));
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -42,15 +44,34 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageBlueprint = new System.Windows.Forms.TabPage();
-            this.blueprintEditor = new BlueprintEditorControl();
             this.tabPageData = new System.Windows.Forms.TabPage();
-            this.templateDataCtrl1 = new TemplateDataCtrl();
+            this.tabScript = new System.Windows.Forms.TabPage();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnCompile = new System.Windows.Forms.ToolStripButton();
+            this.btnShowProperties = new System.Windows.Forms.ToolStripButton();
+            this.qikSyntaxDocument = new Alsing.SourceCode.SyntaxDocument(this.components);
+            this.blueprintEditor = new CygSoft.Xess.UI.WinForms.BlueprintEditorControl();
+            this.templateDataCtrl1 = new CygSoft.Xess.UI.WinForms.Controls.TemplateDataCtrl();
+            this.horizSplitter = new System.Windows.Forms.SplitContainer();
+            this.qikSyntaxEditor = new Alsing.Windows.Forms.SyntaxBoxControl();
+            this.errorListView = new System.Windows.Forms.ListView();
+            this.colLine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colCol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colMsg = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colStackRule = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSymbol = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPageProperties.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPageBlueprint.SuspendLayout();
             this.tabPageData.SuspendLayout();
+            this.tabScript.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.horizSplitter)).BeginInit();
+            this.horizSplitter.Panel1.SuspendLayout();
+            this.horizSplitter.Panel2.SuspendLayout();
+            this.horizSplitter.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -94,6 +115,7 @@
             this.tabControl1.Controls.Add(this.tabPageProperties);
             this.tabControl1.Controls.Add(this.tabPageBlueprint);
             this.tabControl1.Controls.Add(this.tabPageData);
+            this.tabControl1.Controls.Add(this.tabScript);
             this.tabControl1.Location = new System.Drawing.Point(3, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -209,20 +231,6 @@
             this.tabPageBlueprint.Text = "Blueprint";
             this.tabPageBlueprint.UseVisualStyleBackColor = true;
             // 
-            // blueprintEditor
-            // 
-            this.blueprintEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.blueprintEditor.BodyText = null;
-            this.blueprintEditor.FooterText = null;
-            this.blueprintEditor.HeaderText = null;
-            this.blueprintEditor.Location = new System.Drawing.Point(3, 6);
-            this.blueprintEditor.Name = "blueprintEditor";
-            this.blueprintEditor.ReadOnly = false;
-            this.blueprintEditor.Size = new System.Drawing.Size(659, 464);
-            this.blueprintEditor.TabIndex = 11;
-            // 
             // tabPageData
             // 
             this.tabPageData.Controls.Add(this.templateDataCtrl1);
@@ -233,6 +241,69 @@
             this.tabPageData.Text = "Data";
             this.tabPageData.UseVisualStyleBackColor = true;
             // 
+            // tabScript
+            // 
+            this.tabScript.Controls.Add(this.horizSplitter);
+            this.tabScript.Controls.Add(this.toolStrip1);
+            this.tabScript.Location = new System.Drawing.Point(4, 22);
+            this.tabScript.Name = "tabScript";
+            this.tabScript.Size = new System.Drawing.Size(668, 476);
+            this.tabScript.TabIndex = 3;
+            this.tabScript.Text = "Script";
+            this.tabScript.UseVisualStyleBackColor = true;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnCompile,
+            this.btnShowProperties});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(668, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnCompile
+            // 
+            this.btnCompile.Image = ((System.Drawing.Image)(resources.GetObject("btnCompile.Image")));
+            this.btnCompile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCompile.Name = "btnCompile";
+            this.btnCompile.Size = new System.Drawing.Size(72, 22);
+            this.btnCompile.Text = "Compile";
+            // 
+            // btnShowProperties
+            // 
+            this.btnShowProperties.Image = ((System.Drawing.Image)(resources.GetObject("btnShowProperties.Image")));
+            this.btnShowProperties.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowProperties.Name = "btnShowProperties";
+            this.btnShowProperties.Size = new System.Drawing.Size(112, 22);
+            this.btnShowProperties.Text = "Show Properties";
+            // 
+            // qikSyntaxDocument
+            // 
+            this.qikSyntaxDocument.Lines = new string[] {
+        ""};
+            this.qikSyntaxDocument.MaxUndoBufferSize = 1000;
+            this.qikSyntaxDocument.Modified = false;
+            this.qikSyntaxDocument.UndoStep = 0;
+            // 
+            // blueprintEditor
+            // 
+            this.blueprintEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.blueprintEditor.BodyText = null;
+            this.blueprintEditor.FooterText = null;
+            this.blueprintEditor.HeaderText = null;
+            this.blueprintEditor.Location = new System.Drawing.Point(3, 6);
+            this.blueprintEditor.Name = "blueprintEditor";
+            this.blueprintEditor.NewLineAfterText = false;
+            this.blueprintEditor.NewLineBeforeText = false;
+            this.blueprintEditor.ReadOnly = false;
+            this.blueprintEditor.Size = new System.Drawing.Size(659, 464);
+            this.blueprintEditor.TabIndex = 11;
+            this.blueprintEditor.TrimText = false;
+            // 
             // templateDataCtrl1
             // 
             this.templateDataCtrl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -242,6 +313,94 @@
             this.templateDataCtrl1.Name = "templateDataCtrl1";
             this.templateDataCtrl1.Size = new System.Drawing.Size(662, 466);
             this.templateDataCtrl1.TabIndex = 0;
+            // 
+            // horizSplitter
+            // 
+            this.horizSplitter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.horizSplitter.Location = new System.Drawing.Point(0, 25);
+            this.horizSplitter.Name = "horizSplitter";
+            this.horizSplitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // horizSplitter.Panel1
+            // 
+            this.horizSplitter.Panel1.Controls.Add(this.qikSyntaxEditor);
+            // 
+            // horizSplitter.Panel2
+            // 
+            this.horizSplitter.Panel2.Controls.Add(this.errorListView);
+            this.horizSplitter.Size = new System.Drawing.Size(668, 451);
+            this.horizSplitter.SplitterDistance = 336;
+            this.horizSplitter.TabIndex = 5;
+            // 
+            // qikSyntaxEditor
+            // 
+            this.qikSyntaxEditor.ActiveView = Alsing.Windows.Forms.ActiveView.BottomRight;
+            this.qikSyntaxEditor.AutoListPosition = null;
+            this.qikSyntaxEditor.AutoListSelectedText = "a123";
+            this.qikSyntaxEditor.AutoListVisible = false;
+            this.qikSyntaxEditor.BackColor = System.Drawing.Color.White;
+            this.qikSyntaxEditor.BorderStyle = Alsing.Windows.Forms.BorderStyle.None;
+            this.qikSyntaxEditor.CopyAsRTF = false;
+            this.qikSyntaxEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.qikSyntaxEditor.Document = this.qikSyntaxDocument;
+            this.qikSyntaxEditor.FontName = "Courier new";
+            this.qikSyntaxEditor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.qikSyntaxEditor.InfoTipCount = 1;
+            this.qikSyntaxEditor.InfoTipPosition = null;
+            this.qikSyntaxEditor.InfoTipSelectedIndex = 1;
+            this.qikSyntaxEditor.InfoTipVisible = false;
+            this.qikSyntaxEditor.Location = new System.Drawing.Point(0, 0);
+            this.qikSyntaxEditor.LockCursorUpdate = false;
+            this.qikSyntaxEditor.Name = "qikSyntaxEditor";
+            this.qikSyntaxEditor.ShowScopeIndicator = false;
+            this.qikSyntaxEditor.Size = new System.Drawing.Size(668, 336);
+            this.qikSyntaxEditor.SmoothScroll = false;
+            this.qikSyntaxEditor.SplitviewH = -4;
+            this.qikSyntaxEditor.SplitviewV = -4;
+            this.qikSyntaxEditor.TabGuideColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
+            this.qikSyntaxEditor.TabIndex = 0;
+            this.qikSyntaxEditor.Text = "syntaxBoxControl1";
+            this.qikSyntaxEditor.WhitespaceColor = System.Drawing.SystemColors.ControlDark;
+            // 
+            // errorListView
+            // 
+            this.errorListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colLine,
+            this.colCol,
+            this.colMsg,
+            this.colStackRule,
+            this.colSymbol});
+            this.errorListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.errorListView.FullRowSelect = true;
+            this.errorListView.Location = new System.Drawing.Point(0, 0);
+            this.errorListView.Name = "errorListView";
+            this.errorListView.Size = new System.Drawing.Size(668, 111);
+            this.errorListView.TabIndex = 4;
+            this.errorListView.UseCompatibleStateImageBehavior = false;
+            this.errorListView.View = System.Windows.Forms.View.Details;
+            // 
+            // colLine
+            // 
+            this.colLine.Text = "Line";
+            // 
+            // colCol
+            // 
+            this.colCol.Text = "Column";
+            // 
+            // colMsg
+            // 
+            this.colMsg.Text = "Error";
+            this.colMsg.Width = 251;
+            // 
+            // colStackRule
+            // 
+            this.colStackRule.Text = "Location";
+            this.colStackRule.Width = 134;
+            // 
+            // colSymbol
+            // 
+            this.colSymbol.Text = "Symbol";
+            this.colSymbol.Width = 75;
             // 
             // SectionEditCtrl
             // 
@@ -261,6 +420,14 @@
             this.groupBox1.PerformLayout();
             this.tabPageBlueprint.ResumeLayout(false);
             this.tabPageData.ResumeLayout(false);
+            this.tabScript.ResumeLayout(false);
+            this.tabScript.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.horizSplitter.Panel1.ResumeLayout(false);
+            this.horizSplitter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.horizSplitter)).EndInit();
+            this.horizSplitter.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -284,5 +451,18 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblDataStatus;
+        private System.Windows.Forms.TabPage tabScript;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnCompile;
+        private System.Windows.Forms.ToolStripButton btnShowProperties;
+        private Alsing.SourceCode.SyntaxDocument qikSyntaxDocument;
+        private System.Windows.Forms.SplitContainer horizSplitter;
+        private Alsing.Windows.Forms.SyntaxBoxControl qikSyntaxEditor;
+        private System.Windows.Forms.ListView errorListView;
+        private System.Windows.Forms.ColumnHeader colLine;
+        private System.Windows.Forms.ColumnHeader colCol;
+        private System.Windows.Forms.ColumnHeader colMsg;
+        private System.Windows.Forms.ColumnHeader colStackRule;
+        private System.Windows.Forms.ColumnHeader colSymbol;
     }
 }
