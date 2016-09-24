@@ -34,6 +34,7 @@ namespace CygSoft.Xess.ProjectFile
             public const string HeaderBlueprint = "HeaderBlueprint";
             public const string Blueprint = "Blueprint";
             public const string FooterBlueprint = "FooterBlueprint";
+            public const string Script = "Script";
 
             public static string XPathToCollection { get { return string.Format("//{0}/{1}", TemplateSection.CollectionTag, TemplateSection.SingleTag); } }
         }

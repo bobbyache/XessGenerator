@@ -42,5 +42,18 @@ namespace CygSoft.Xess.Domain.Templates
             }
         }
 
+        private string script = string.Empty;
+        public string Script
+        {
+            get { return this.script; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    this.script = string.Empty;
+                else
+                    this.script = value;
+            }
+        }
+
     }
 }

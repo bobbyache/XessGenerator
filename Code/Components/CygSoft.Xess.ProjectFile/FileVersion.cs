@@ -21,7 +21,7 @@ namespace CygSoft.Xess.ProjectFile
             // set the current version information here!
             // ---------------------------------------------
             ExpectedFileVersionFamily = "xess";
-            ExpectedFileVersionNumber = 3;
+            ExpectedFileVersionNumber = 4;
             // -------------------------------------------
             XElement projectTag = XElement.Parse(xmlDoc.OuterXml, LoadOptions.None);
             string tagName = projectTag.Name.ToString();
@@ -74,9 +74,10 @@ namespace CygSoft.Xess.ProjectFile
 
                 string version1 = "xess v1 = Xess Generator v1.3 and below";
                 string version2 = "xess v2 = Xess Generator v1.5.0 and below";
+                string version3 = "xess v3 = Xess Generator v1.6 and below";
 
-                errorMessage = string.Format("Current version is incompatible with the loaded version.\n{0}\n{1}\n{2}\n{3}", 
-                    currentVersion, loadedVersion, version1, version2);
+                errorMessage = string.Format("Current version is incompatible with the loaded version.\n{0}\n{1}\n{2}\n{3}\n{4}", 
+                    currentVersion, loadedVersion, version1, version2, version3);
                 return false;
             }
             return true;

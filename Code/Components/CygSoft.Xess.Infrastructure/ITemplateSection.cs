@@ -13,6 +13,7 @@ namespace CygSoft.Xess.Infrastructure
         string HeaderText { get; set; }
         string BodyText { get; set; }
         string FooterText { get; set; }
+        string Script { get; set; }
         bool HasDataSource { get; }
         bool HasData { get; }
         ITemplate ParentTemplate { get; }

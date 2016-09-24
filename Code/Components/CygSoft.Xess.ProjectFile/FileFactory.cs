@@ -20,7 +20,7 @@ namespace CygSoft.Xess.ProjectFile
             familyAttr.Value = "xess";
 
             XmlAttribute versionAttr = xmlDocument.CreateAttribute("Version");
-            versionAttr.Value = "3";
+            versionAttr.Value = "4";
 
             root.Attributes.Append(familyAttr);
             root.Attributes.Append(versionAttr);

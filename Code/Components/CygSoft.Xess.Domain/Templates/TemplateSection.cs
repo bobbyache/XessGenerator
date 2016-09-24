@@ -80,6 +80,12 @@ namespace CygSoft.Xess.Domain.Templates
             set { this.blueprint.FooterText = value; }
         }
 
+        public string Script
+        {
+            get { return this.blueprint.Script; }
+            set { this.blueprint.Script = value; }
+        }
+
         private string dataSourceId = string.Empty;
         public string DataSourceID
         {

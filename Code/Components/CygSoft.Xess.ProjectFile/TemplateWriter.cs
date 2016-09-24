@@ -55,6 +55,7 @@ namespace CygSoft.Xess.ProjectFile
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.HeaderBlueprint, new XCData(section.HeaderText)));
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.Blueprint, new XCData(section.BodyText)));
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.FooterBlueprint, new XCData(section.FooterText)));
+                    templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.Script, new XCData(section.Script)));
 
                     templateElement.Add(templateSectionElement);
                 }
@@ -87,6 +88,7 @@ namespace CygSoft.Xess.ProjectFile
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.HeaderBlueprint, new XCData(section.HeaderText)));
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.Blueprint, new XCData(section.BodyText)));
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.FooterBlueprint, new XCData(section.FooterText)));
+                    templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.Script, new XCData(section.Script)));
 
                     templateElement.Add(templateSectionElement);
                 }
@@ -112,6 +114,7 @@ namespace CygSoft.Xess.ProjectFile
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.HeaderBlueprint, new XCData(section.HeaderText)));
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.Blueprint, new XCData(section.BodyText)));
                     templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.FooterBlueprint, new XCData(section.FooterText)));
+                    templateSectionElement.Add(new XElement(Elements_V1.TemplateSection.Script, new XCData(section.Script)));
 
                     templateElement.Add(templateSectionElement);
                 }

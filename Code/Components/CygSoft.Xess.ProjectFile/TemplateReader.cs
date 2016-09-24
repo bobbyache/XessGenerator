@@ -57,7 +57,8 @@ namespace CygSoft.Xess.ProjectFile
                                                            Ordinal = (int)e.Attribute(Elements_V1.TemplateSection.Ordinal),
                                                            HeaderText = (string)e.Element(Elements_V1.TemplateSection.HeaderBlueprint),
                                                            BodyText = (string)e.Element(Elements_V1.TemplateSection.Blueprint),
-                                                           FooterText = (string)e.Element(Elements_V1.TemplateSection.FooterBlueprint)
+                                                           FooterText = (string)e.Element(Elements_V1.TemplateSection.FooterBlueprint),
+                                                           Script = (string)e.Element(Elements_V1.TemplateSection.Script)
                                                        }).ToList<ITemplateSection>();
 
             template.InitializeSections(templateSections);

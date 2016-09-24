@@ -61,6 +61,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
                 this.currentSection.BodyText = blueprintEditor.BodyText;
                 this.currentSection.FooterText = blueprintEditor.FooterText;
                 this.currentSection.HeaderText = blueprintEditor.HeaderText;
+                this.currentSection.Script = qikSyntaxDocument.Text;
 
                 ChangeState(TemplateEditorStateEnum.ReadOnly);
 
@@ -130,6 +131,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
             blueprintEditor.FooterText = this.currentSection.FooterText;
             blueprintEditor.BodyText = this.currentSection.BodyText;
             blueprintEditor.HeaderText = this.currentSection.HeaderText;
+            qikSyntaxDocument.Text = this.currentSection.Script;
 
             cboDataSource.SelectedItem = CurrentSectionDataSource(this.currentSection.DataSourceID);
         }
@@ -152,6 +154,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
             blueprintEditor.FooterText = string.Empty;
             blueprintEditor.HeaderText = string.Empty;
             blueprintEditor.BodyText = string.Empty;
+            qikSyntaxDocument.Text = string.Empty;
         }
 
         private void ChangeState(TemplateEditorStateEnum state)
@@ -176,6 +179,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
                     cboDataSource.Enabled = false;
                     blueprintEditor.Enabled = false;
                     blueprintEditor.ReadOnly = true;
+                    qikSyntaxEditor.ReadOnly = true;
                     break;
                 case TemplateEditorStateEnum.Editing:
                     btnEdit.Enabled = false;
@@ -186,6 +190,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
                     cboDataSource.Enabled = true;
                     blueprintEditor.Enabled = true;
                     blueprintEditor.ReadOnly = false;
+                    qikSyntaxEditor.ReadOnly = false;
                     break;
                 case TemplateEditorStateEnum.ReadOnly:
                     btnEdit.Enabled = true;
@@ -196,6 +201,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
                     cboDataSource.Enabled = false;
                     blueprintEditor.Enabled = true;
                     blueprintEditor.ReadOnly = true;
+                    qikSyntaxEditor.ReadOnly = true;
                     break;
             }
         }
