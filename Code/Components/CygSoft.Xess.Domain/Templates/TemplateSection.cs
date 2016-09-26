@@ -195,6 +195,7 @@ namespace CygSoft.Xess.Domain.Templates
             cloneSection.BodyText = this.BodyText;
             cloneSection.Ordinal = this.Ordinal;
             cloneSection.Description = this.Description;
+            cloneSection.Script = this.Script;
 
             return cloneSection;
         }
