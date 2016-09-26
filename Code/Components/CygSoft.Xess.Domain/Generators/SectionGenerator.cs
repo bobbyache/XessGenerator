@@ -39,7 +39,7 @@ namespace CygSoft.Xess.Domain.Generators
 
         private void SetupCompiler()
         {
-            string scriptText = "";
+            string scriptText = templateSection.Script;
 
             if (!string.IsNullOrEmpty(scriptText))
                 compiler.Compile(scriptText);

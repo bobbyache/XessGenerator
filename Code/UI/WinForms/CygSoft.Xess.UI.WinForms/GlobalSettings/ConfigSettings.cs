@@ -144,6 +144,44 @@ namespace CygSoft.Xess.UI.WinForms.GlobalSettings
             }
         }
 
+        private static string qikScriptSyntaxFile;
+        public static string QikScriptSyntaxFile
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(qikScriptSyntaxFile))
+                    qikScriptSyntaxFile = ConfigurationManager.AppSettings["QikScriptSyntaxFile"];
+
+                return qikScriptSyntaxFile;
+            }
+            set
+            {
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                configuration.AppSettings.Settings["QikScriptSyntaxFile"].Value = value;
+                configuration.Save();
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+        }
+
+        private static string qikTemplateSyntaxFile;
+        public static string QikTemplateSyntaxFile
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(qikTemplateSyntaxFile))
+                    qikTemplateSyntaxFile = ConfigurationManager.AppSettings["QikTemplateSyntaxFile"];
+
+                return qikTemplateSyntaxFile;
+            }
+            set
+            {
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                configuration.AppSettings.Settings["QikTemplateSyntaxFile"].Value = value;
+                configuration.Save();
+                ConfigurationManager.RefreshSection("appSettings");
+            }
+        }
+
         private static string defaultSyntax;
         public static string DefaultSyntax
         {
@@ -192,6 +230,8 @@ namespace CygSoft.Xess.UI.WinForms.GlobalSettings
             lastProject = ConfigurationManager.AppSettings["LastProject"];
             winMergePath = ConfigurationManager.AppSettings["WinMergePath"];
             syntaxFilePath = ConfigurationManager.AppSettings["SyntaxFilePath"];
+            qikScriptSyntaxFile = ConfigurationManager.AppSettings["QikScriptSyntaxFile"];
+            qikTemplateSyntaxFile = ConfigurationManager.AppSettings["QikTemplateSyntaxFile"];
             defaultSyntax = ConfigurationManager.AppSettings["DefaultSyntax"];
             sqlServerSyntax = ConfigurationManager.AppSettings["SQLServerSyntax"];
         }

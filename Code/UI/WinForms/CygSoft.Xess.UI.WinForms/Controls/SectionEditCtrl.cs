@@ -1,21 +1,29 @@
 ﻿using System;
+using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
 using CygSoft.Xess.Infrastructure;
 using CygSoft.Xess.App;
 using CygSoft.Xess.UI.WinForms.GlobalSettings;
 using CygSoft.Qik.LanguageEngine.Infrastructure;
+using Alsing.SourceCode;
+using System.Collections.Generic;
 
 namespace CygSoft.Xess.UI.WinForms.Controls
 {
     public partial class SectionEditCtrl : UserControl
     {
+        private Row selectedRow;
+
         public event EventHandler SectionSaved;
         public event EventHandler StateChanged;
 
         public SectionEditCtrl()
         {
             InitializeComponent();
+            qikSyntaxDocument.SyntaxFile = ConfigSettings.QikScriptSyntaxFile;
+            blueprintEditor.SyntaxFilePath = ConfigSettings.QikTemplateSyntaxFile;
+
             ChangeState(TemplateEditorStateEnum.Disabled);
         }
 
@@ -36,7 +44,6 @@ namespace CygSoft.Xess.UI.WinForms.Controls
         {
             get { return this.currentState; }
         }
-
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -72,9 +79,17 @@ namespace CygSoft.Xess.UI.WinForms.Controls
 
         private bool ValidateFields()
         {
+            
             if (txtTitle.Text.Trim() == "")
             {
                 MessageBox.Show(this, CommonConstants.DialogMessages.NoInputValueForMandatoryField("Title"), ConfigSettings.ApplicationTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (!Compile(templateDataCtrl1.ColumnList, qikSyntaxDocument.Text))
+            {
+                MessageBox.Show(this, CommonConstants.DialogMessages.ScriptCompilationError(), ConfigSettings.ApplicationTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
@@ -92,7 +107,7 @@ namespace CygSoft.Xess.UI.WinForms.Controls
             DisplayDataStatus();
             DisplayDataTab();
             DisplayAvailableRecords();
-            DisplayPlaceholders();
+            Compile(templateDataCtrl1.ColumnList, qikSyntaxDocument.Text);
         }
 
         public void AssignSection()
@@ -123,15 +138,13 @@ namespace CygSoft.Xess.UI.WinForms.Controls
             txtTitle.Text = this.currentSection.Title;
             txtDescription.Text = this.currentSection.Description;
 
-            if (this.currentSection.ParentTemplate.Syntax != null)
-            {
-                blueprintEditor.SyntaxFilePath = XessApplication.GetSyntaxFile(this.currentSection.ParentTemplate.Syntax).FilePath;
-            }
-
             blueprintEditor.FooterText = this.currentSection.FooterText;
             blueprintEditor.BodyText = this.currentSection.BodyText;
             blueprintEditor.HeaderText = this.currentSection.HeaderText;
             qikSyntaxDocument.Text = this.currentSection.Script;
+
+            if (!string.IsNullOrEmpty(qikSyntaxDocument.Text))
+                Compile(templateDataCtrl1.ColumnList, qikSyntaxDocument.Text);
 
             cboDataSource.SelectedItem = CurrentSectionDataSource(this.currentSection.DataSourceID);
         }
@@ -248,10 +261,127 @@ namespace CygSoft.Xess.UI.WinForms.Controls
             }
         }
 
-        private void DisplayPlaceholders()
+        private bool Compile(string[] columnList, string scriptText)
         {
-            ISymbolInfo[] symbolInfoListing = XessApplication.GeneratePlaceholders(templateDataCtrl1.ColumnList);
-            blueprintEditor.SetPlaceholders(symbolInfoListing);
+            bool hasErrors = false;
+
+            if (columnList.Length != 0 && !string.IsNullOrEmpty(scriptText))
+            {
+                ICompiler compiler = XessApplication.GetNewCompiler();
+                
+                compiler.AfterCompile += Compiler_AfterCompile;
+                compiler.BeforeCompile += Compiler_BeforeCompile;
+                compiler.AfterInput += Compiler_AfterInput;
+                compiler.CompileError += Compiler_CompileError;
+
+                compiler.Compile(scriptText);
+                hasErrors = compiler.HasErrors;
+
+                foreach (string column in columnList)
+                {
+                    string symbol = compiler.TextToSymbol(column);
+                    compiler.CreateAutoInput(symbol, column, "Column: " + column);
+                }
+
+                compiler.AfterCompile -= Compiler_AfterCompile;
+                compiler.BeforeCompile -= Compiler_BeforeCompile;
+                compiler.AfterInput -= Compiler_AfterInput;
+                compiler.CompileError -= Compiler_CompileError;
+
+                blueprintEditor.SetPlaceholders(compiler.GetSymbolInfoSet(columnList.Select(c => "@" + c).ToArray()));
+            }
+            return !hasErrors;
+        }
+
+
+        private void btnCompile_Click(object sender, EventArgs e)
+        {
+            Compile(templateDataCtrl1.ColumnList, qikSyntaxDocument.Text);
+        }
+
+        private void Compiler_BeforeCompile(object sender, EventArgs e)
+        {
+            DeselectRow();
+            errorListView.Items.Clear();
+        }
+
+        private void Compiler_CompileError(object sender, CompileErrorEventArgs e)
+        {
+            AddErrorLine(e.Line, e.Column, e.Message, e.Location, e.OffendingSymbol);
+        }
+
+        private void Compiler_AfterInput(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void Compiler_AfterCompile(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void AddErrorLine(int line, int column, string message, string ruleStack, string symbol)
+        {
+            ListViewItem item = new ListViewItem();
+            item.Text = line.ToString();
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, column.ToString()));
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, message));
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ruleStack));
+            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, symbol));
+
+            errorListView.Items.Add(item);
+        }
+
+        private Row RowFromLine(int line)
+        {
+            int index = line > 1 ? line - 1 : line;
+            Row row = qikSyntaxEditor.Document[index];
+            return row;
+        }
+
+        private void SelectRow(int line)
+        {
+            Row row = RowFromLine(line);
+            if (row != null)
+            {
+                qikSyntaxEditor.GotoLine(line);
+                row.BackColor = Color.Gray;
+                selectedRow = row;
+            }
+            else
+                selectedRow = null;
+        }
+
+        private void DeselectRow()
+        {
+            if (selectedRow != null)
+            {
+                selectedRow.BackColor = Color.White;
+                this.selectedRow = null;
+            }
+        }
+
+        private void errorListView_Leave(object sender, EventArgs e)
+        {
+            DeselectRow();
+        }
+
+        private void errorListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (selectedRow != null)
+                selectedRow.BackColor = Color.White;
+
+            if (errorListView.SelectedItems.Count > 0)
+            {
+                ListViewItem item = errorListView.SelectedItems[0];
+                int lineNumber = int.Parse(item.Text);
+                SelectRow(lineNumber);
+            }
+        }
+
+        private void qikSyntaxEditor_RowClick(object sender, Alsing.Windows.Forms.SyntaxBox.RowMouseEventArgs e)
+        {
+            DeselectRow();
         }
     }
 }

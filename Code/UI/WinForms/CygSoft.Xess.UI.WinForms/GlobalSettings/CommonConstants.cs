@@ -18,6 +18,8 @@ namespace CygSoft.Xess.UI.WinForms.GlobalSettings
             public const string ExcelFileNotFound = "Xess could not find the original excel file source.";
             public const string CloneDataSourcePrompt = "Clone the selected data source?";
 
+            public static string ScriptCompilationError() { return "The script contains errors. Please fix the script errors before continuing."; }
+
             public static string NoInputValueForMandatoryField(string fieldName)
             {
                 return string.Format("A valid value for {0} must be entered in order to continue.", fieldName);

@@ -44,7 +44,7 @@
       <HintPath>..\..\..\packages\Alsing.SyntaxBox.1.4.10.1\lib\net45\Alsing.SyntaxBox.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CygSoft.Qik.LanguageEngine.Infrastructure, Version=1.0.1.28923, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CygSoft.Qik.LanguageEngine.Infrastructure, Version=1.0.1.31540, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\External\CygSoft.Qik.LanguageEngine.Infrastructure.dll</HintPath>
     </Reference>
@@ -270,6 +270,12 @@
     <Content Include="Connections.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="qikscript.syn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="qiktemplate.syn">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\folder_add.png" />
     <None Include="Resources\data_previous.png" />
     <None Include="Resources\data_refresh.png" />

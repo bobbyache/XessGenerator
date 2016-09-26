@@ -70,7 +70,6 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             this.progressConsole = new CygSoft.Xess.UI.WinForms.Controls.ProgressConsole();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.templateInfoCtrl1 = new CygSoft.Xess.UI.WinForms.Controls.TemplateInfoCtrl();
-            this.syntaxDocument1 = new Alsing.SourceCode.SyntaxDocument(this.components);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -438,14 +437,6 @@ namespace CygSoft.Xess.UI.WinForms.Forms
             this.templateInfoCtrl1.Size = new System.Drawing.Size(1215, 326);
             this.templateInfoCtrl1.TabIndex = 0;
             // 
-            // syntaxDocument1
-            // 
-            this.syntaxDocument1.Lines = new string[] {
-        ""};
-            this.syntaxDocument1.MaxUndoBufferSize = 1000;
-            this.syntaxDocument1.Modified = false;
-            this.syntaxDocument1.UndoStep = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,7 +496,6 @@ namespace CygSoft.Xess.UI.WinForms.Forms
         private System.Windows.Forms.ToolStripButton btnSaveDefaultFile;
         private System.Windows.Forms.SplitContainer splitContainer;
         private Alsing.Windows.Forms.SyntaxBoxControl outputTextbox;
-        private Alsing.SourceCode.SyntaxDocument syntaxDocument1;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
         private System.Windows.Forms.TabControl tabControl1;

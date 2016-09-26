@@ -7,7 +7,6 @@ using CygSoft.Xess.App;
 using CygSoft.Xess.UI.WinForms.GlobalSettings;
 using System.Text;
 
-
 namespace CygSoft.Xess.UI.WinForms.Forms
 {
     public partial class TemplateForm : Form
@@ -15,11 +14,12 @@ namespace CygSoft.Xess.UI.WinForms.Forms
         private RegistrySettings registrySettings = null;
         private List<ITemplate> templatesList = null;
         private string connectionsFile;
-
+        
         public TemplateForm(string connectionsFile, RegistrySettings registrySettings)
         {
             InitializeComponent();
 
+            
             IDataSource[] dataSources;
 
             this.connectionsFile = connectionsFile;

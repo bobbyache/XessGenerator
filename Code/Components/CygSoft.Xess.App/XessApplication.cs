@@ -120,18 +120,9 @@ namespace CygSoft.Xess.App
             fileManager.UpdateTemplates(templates);
         }
 
-        public static ISymbolInfo[] GeneratePlaceholders(string[] columnList)
+        public static ICompiler GetNewCompiler()
         {
-            List<ISymbolInfo> symbolInfoList = new List<ISymbolInfo>();
-            ICompiler compiler = new Compiler();
-
-            foreach (string column in columnList)
-            {
-                string symbol = compiler.TextToSymbol(column);
-                compiler.CreateAutoInput(symbol, column, "Column: " + column);
-            }
-
-            return compiler.GetSymbolInfoSet(columnList.Select(c => "@" + c).ToArray());
+            return new Compiler();
         }
 
         /// <summary>
@@ -206,7 +197,6 @@ namespace CygSoft.Xess.App
             return newTemplate;
         }
 
-        public static ICompiler Compiler { get { return new Compiler(); } }
         public static IGenerator Generator { get { return new Generator(); } }
 
         private static void dataSourceGenerator_PercentComplete(object sender, PercentCompleteEventArgs e)
