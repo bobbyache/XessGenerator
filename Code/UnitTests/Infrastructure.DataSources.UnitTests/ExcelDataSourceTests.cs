@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using CygSoft.Xess.Infrastructure.DataSources.Excel;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,13 @@ namespace Infrastructure.DataSources.UnitTests
         public void TestItWorks()
         {
             Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void ExcelDataSource_WhenInitializing_HasConnectionString()
+        {
+            //IExcelDataSource dataSource = new ExcelDataSource("C:\MyPath\MyFile.xlsx");
+            //dataSource.
         }
     }
 }
