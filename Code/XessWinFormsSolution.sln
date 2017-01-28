@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E63C1037-4D24-4726-9A3D-B311952EE86C}"
 	ProjectSection(SolutionItems) = preProject
 		default.runsettings = default.runsettings
@@ -17,8 +19,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CygSoft.Xess.Domain", "Components\CygSoft.Xess.Domain\CygSoft.Xess.Domain.csproj", "{705F96C0-6CB0-4FFA-892A-2775EAD0AC99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CygSoft.Xess.App", "Components\CygSoft.Xess.App\CygSoft.Xess.App.csproj", "{7A60436C-0A90-4DEE-8208-A16B0784021D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsGUI", "UI\WinForms\CygSoft.Xess.UI.WinForms\WinFormsGUI.csproj", "{ACE4B856-943A-469E-83D8-CAA8B91AEB68}"
 EndProject
@@ -92,16 +92,6 @@ Global
 		{7A60436C-0A90-4DEE-8208-A16B0784021D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7A60436C-0A90-4DEE-8208-A16B0784021D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7A60436C-0A90-4DEE-8208-A16B0784021D}.Release|x86.ActiveCfg = Release|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{41D8C320-6C3C-4A1E-9A43-4A9EC8DE7577}.Release|x86.ActiveCfg = Release|Any CPU
 		{ACE4B856-943A-469E-83D8-CAA8B91AEB68}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{ACE4B856-943A-469E-83D8-CAA8B91AEB68}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{ACE4B856-943A-469E-83D8-CAA8B91AEB68}.Debug|Mixed Platforms.Build.0 = Debug|x86
