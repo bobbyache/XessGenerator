@@ -45,12 +45,13 @@ namespace CygSoft.Xess.Infrastructure.DataSources
         public abstract bool SourceIsValid();
         public abstract void FetchData();
 
-        public virtual void LoadFileData()
+        public void LoadFileData()
         {
             LoadFileData(false);
         }
 
-        public virtual void LoadFileData(bool selectableRows)
+        //TODO: This is a problem, since this is also an external dependency.
+        public void LoadFileData(bool selectableRows)
         {
             DataTable table = ReadMatrix();
 
@@ -69,12 +70,14 @@ namespace CygSoft.Xess.Infrastructure.DataSources
             this.currentDataTable = table;
         }
 
+        //TODO: This is a problem, since this is also an external dependency.
         public void DeleteFileData()
         {
             if (File.Exists(this.DatasetFilePath))
                 File.Delete(this.DatasetFilePath);
         }
 
+        //TODO: This is a problem, since this is also an external dependency.
         public void WriteFileData()
         {
             if (currentDataTable != null)

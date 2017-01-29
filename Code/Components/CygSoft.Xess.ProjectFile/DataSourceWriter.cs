@@ -100,7 +100,6 @@ namespace CygSoft.Xess.ProjectFile
                     dataSourceElement.Element(Elements_V1.DataSource.Sheet).Value = excelDataSource.ActiveSheet;
                     dataSourceElement.Element(Elements_V1.DataSource.TopLeftCell).Value = excelDataSource.TopLeftCell;
                     dataSourceElement.Element(Elements_V1.DataSource.BottomRightCell).Value = excelDataSource.BottomRightCell;
-                    dataSourceElement.Element(Elements_V1.DataSource.Provider).Value = excelDataSource.Provider;
                 }
                 else if (dataSource is ISqlDatabaseDataSource)
                 {
@@ -135,7 +134,6 @@ namespace CygSoft.Xess.ProjectFile
                     dataSourceElement.Add(new XElement(Elements_V1.DataSource.Sheet, excelDataSource.ActiveSheet));
                     dataSourceElement.Add(new XElement(Elements_V1.DataSource.TopLeftCell, excelDataSource.TopLeftCell));
                     dataSourceElement.Add(new XElement(Elements_V1.DataSource.BottomRightCell, excelDataSource.BottomRightCell));
-                    dataSourceElement.Add(new XElement(Elements_V1.DataSource.Provider, excelDataSource.Provider));
                 }
                 else if (dataSource is ISqlDatabaseDataSource)
                 {

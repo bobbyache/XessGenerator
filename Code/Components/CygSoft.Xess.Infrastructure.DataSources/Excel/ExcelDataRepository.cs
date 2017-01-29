@@ -4,11 +4,17 @@ using System.Data.OleDb;
 using System.Data.Common;
 using System.IO;
 using System.Diagnostics;
+using System;
 
 namespace CygSoft.Xess.Infrastructure.DataSources.Excel
 {
-    internal class ExcelDataRepository
+    internal class ExcelDataRepository : IExcelDataRepository
     {
+        public bool FileExists(string filePath)
+        {
+            return File.Exists(filePath);
+        }
+
         public DataSet LoadExcel(string connectonString, string activeSheet, string topLeftCell, string bottomRightCell)
         {
             DataSet ds = new DataSet();
