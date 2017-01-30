@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\AbstractDataSource.cs" />
+    <Compile Include="Base\DataSourceFileRepository.cs" />
+    <Compile Include="Base\IDataSourceFileRepository.cs" />
     <Compile Include="DataSourceFactory.cs" />
     <Compile Include="Excel\ExcelConnectionRepository.cs" />
     <Compile Include="Excel\ExcelFileRepository.cs" />

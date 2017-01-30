@@ -8,9 +8,25 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Base
 
         private DataFiles dataFiles;
         private DataTable currentDataTable = null;
+        private IDataSourceFileRepository dataSourceFileRepository;
 
-        public AbstractDataSource() { }
-        public AbstractDataSource(string guidString) : base(guidString) { }
+        public AbstractDataSource()
+        {
+            this.dataSourceFileRepository = new DataSourceFileRepository();
+        }
+        public AbstractDataSource(string guidString) : base(guidString)
+        {
+            this.dataSourceFileRepository = new DataSourceFileRepository();
+        }
+
+        public AbstractDataSource(IDataSourceFileRepository dataSourceFileRepository)
+        {
+            this.dataSourceFileRepository = dataSourceFileRepository;
+        }
+        public AbstractDataSource(IDataSourceFileRepository dataSourceFileRepository, string guidString) : base(guidString)
+        {
+            this.dataSourceFileRepository = dataSourceFileRepository;
+        }
 
         public string Title { get; set; }
         public string SourceTypeText { get; protected set; }
@@ -80,8 +96,7 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Base
         //TODO: This is a problem, since this is also an external dependency.
         public void WriteFileData()
         {
-            if (currentDataTable != null)
-                currentDataTable.WriteXml(this.DatasetFilePath);
+            dataSourceFileRepository.Write(this.currentDataTable, this.DatasetFilePath);
         }
 
         public bool DataExists()
@@ -106,14 +121,7 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Base
 
         private DataTable ReadMatrix()
         {
-            if (File.Exists(this.DatasetFilePath))
-            {
-                DataSet dataSet = new DataSet();
-
-                dataSet.ReadXml(this.DatasetFilePath);
-                return dataSet.Tables[this.TableName];
-            }
-            return null;
+            return dataSourceFileRepository.Read(this.DatasetFilePath, this.TableName);
         }
 
     }
