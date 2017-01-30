@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.IO;
 
-namespace CygSoft.Xess.Infrastructure.DataSources
+namespace CygSoft.Xess.Infrastructure.DataSources.Base
 {
     public abstract class AbstractDataSource : PersistableObject, IDataSource
     {

@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractDataSource.cs" />
+    <Compile Include="Base\AbstractDataSource.cs" />
     <Compile Include="DataSourceFactory.cs" />
     <Compile Include="Excel\ExcelConnectionRepository.cs" />
     <Compile Include="Excel\ExcelFileRepository.cs" />
