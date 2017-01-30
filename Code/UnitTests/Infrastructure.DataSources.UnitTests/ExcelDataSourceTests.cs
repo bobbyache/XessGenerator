@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using CygSoft.Xess.Infrastructure.DataSources.Base;
+using Infrastructure.DataSources.UnitTests.Fakes;
 
 namespace Infrastructure.DataSources.UnitTests
 {
@@ -25,9 +27,17 @@ namespace Infrastructure.DataSources.UnitTests
         public void ExcelDataSource_WhenInitialized_HasXLSConnectionString()
         {
             // Arrange
-            StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
-            stubRepository.FileExtensionType = ExcelFileExtensionType.XLS;
-            IExcelDataSource dataSource = new ExcelDataSource(stubRepository, "excel_data.xls");
+            //StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
+            //stubRepository.FileExtensionType = ExcelFileExtensionType.XLS;
+            //FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            //IExcelDataSource dataSource = new ExcelDataSource(stubRepository, "excel_data.xls");
+
+            FakeExcelConnectionRepository stubExcelConnectionRepository = new FakeExcelConnectionRepository();
+            FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            FakeExcelDataRepository stubExcelDataRepository = new FakeExcelDataRepository();
+
+            stubExcelConnectionRepository.FileExtensionType = ExcelFileExtensionType.XLS;
+            IExcelDataSource dataSource = new ExcelDataSource(stubExcelConnectionRepository, fakeDataSourceFileRepository, stubExcelDataRepository, "excel_data.xls");
 
             // Act
 
@@ -50,9 +60,12 @@ namespace Infrastructure.DataSources.UnitTests
         public void ExcelDataSource_WhenInitialized_HasXLSXConnectionString()
         {
             // Arrange
-            StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
-            stubRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
-            IExcelDataSource dataSource = new ExcelDataSource(stubRepository, "excel_data.xlsx");
+            FakeExcelConnectionRepository stubExcelConnectionRepository = new FakeExcelConnectionRepository();
+            FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            FakeExcelDataRepository stubExcelDataRepository = new FakeExcelDataRepository();
+
+            stubExcelConnectionRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
+            IExcelDataSource dataSource = new ExcelDataSource(stubExcelConnectionRepository, fakeDataSourceFileRepository, stubExcelDataRepository, "excel_data.xlsx");
 
             // Act
 
@@ -74,10 +87,12 @@ namespace Infrastructure.DataSources.UnitTests
         public void ExcelDataSource_WhenInitialized_HasSheets()
         {
             // Arrange
-            StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
-            StubExcelDataRepository dataRepository = new StubExcelDataRepository();
-            stubRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
-            IExcelDataSource dataSource = new ExcelDataSource(dataRepository, stubRepository, "excel_data.xlsx");
+            FakeExcelConnectionRepository stubExcelConnectionRepository = new FakeExcelConnectionRepository();
+            FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            FakeExcelDataRepository stubExcelDataRepository = new FakeExcelDataRepository();
+
+            stubExcelConnectionRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
+            IExcelDataSource dataSource = new ExcelDataSource(stubExcelConnectionRepository, fakeDataSourceFileRepository, stubExcelDataRepository, "excel_data.xlsx");
 
             // Act
             dataSource.FetchData();
@@ -99,10 +114,12 @@ namespace Infrastructure.DataSources.UnitTests
         public void ExcelDataSource_WhenInitialized_ActivatesFirstSheet()
         {
             // Arrange
-            StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
-            StubExcelDataRepository dataRepository = new StubExcelDataRepository();
-            stubRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
-            IExcelDataSource dataSource = new ExcelDataSource(dataRepository, stubRepository, "excel_data.xlsx");
+            FakeExcelConnectionRepository stubExcelConnectionRepository = new FakeExcelConnectionRepository();
+            FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            FakeExcelDataRepository stubExcelDataRepository = new FakeExcelDataRepository();
+
+            stubExcelConnectionRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
+            IExcelDataSource dataSource = new ExcelDataSource(stubExcelConnectionRepository, fakeDataSourceFileRepository, stubExcelDataRepository, "excel_data.xlsx");
 
             // Act
             dataSource.FetchData();       
@@ -124,10 +141,12 @@ namespace Infrastructure.DataSources.UnitTests
         public void ExcelDataSource_ActivateSheet_LoadsCorrectSheet()
         {
             // Arrange
-            StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
-            StubExcelDataRepository dataRepository = new StubExcelDataRepository();
-            stubRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
-            IExcelDataSource dataSource = new ExcelDataSource(dataRepository, stubRepository, "excel_data.xlsx");
+            FakeExcelConnectionRepository stubExcelConnectionRepository = new FakeExcelConnectionRepository();
+            FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            FakeExcelDataRepository stubExcelDataRepository = new FakeExcelDataRepository();
+
+            stubExcelConnectionRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
+            IExcelDataSource dataSource = new ExcelDataSource(stubExcelConnectionRepository, fakeDataSourceFileRepository, stubExcelDataRepository, "excel_data.xlsx");
 
             // Act
             dataSource.FetchData();
@@ -150,10 +169,12 @@ namespace Infrastructure.DataSources.UnitTests
         public void ExcelDataSource_WhenLoaded_HasCurrentData()
         {
             // Arrange
-            StubExcelConnectionRepository stubRepository = new StubExcelConnectionRepository();
-            StubExcelDataRepository dataRepository = new StubExcelDataRepository();
-            stubRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
-            IExcelDataSource dataSource = new ExcelDataSource(dataRepository, stubRepository, "excel_data.xlsx");
+            FakeExcelConnectionRepository stubExcelConnectionRepository = new FakeExcelConnectionRepository();
+            FakeDataSourceFileRepository fakeDataSourceFileRepository = new FakeDataSourceFileRepository();
+            FakeExcelDataRepository stubExcelDataRepository = new FakeExcelDataRepository();
+
+            stubExcelConnectionRepository.FileExtensionType = ExcelFileExtensionType.XLSX;
+            IExcelDataSource dataSource = new ExcelDataSource(stubExcelConnectionRepository, fakeDataSourceFileRepository, stubExcelDataRepository, "excel_data.xlsx");
 
             // Act
             dataSource.FetchData();        
@@ -161,14 +182,13 @@ namespace Infrastructure.DataSources.UnitTests
             // Assert
             Assert.IsNotNull(dataSource.CurrentData);
             Assert.IsTrue(dataSource.DataExists());
-
         }
 
-        public class StubExcelConnectionRepository : IExcelConnectionRepository
+        public class FakeExcelConnectionRepository : IExcelConnectionRepository
         {
             public ExcelFileExtensionType FileExtensionType;
 
-            public StubExcelConnectionRepository()
+            public FakeExcelConnectionRepository()
             {
                 FileExtensionType = ExcelFileExtensionType.XLSX;
             }
@@ -182,7 +202,7 @@ namespace Infrastructure.DataSources.UnitTests
             }
         }
 
-        public class StubExcelDataRepository : IExcelFileRepository
+        public class FakeExcelDataRepository : IExcelFileRepository
         {
             public bool OpenSuccess = false;
             public bool TargetFileExists = true;

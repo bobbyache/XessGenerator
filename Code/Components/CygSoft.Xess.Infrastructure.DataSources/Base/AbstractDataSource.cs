@@ -69,10 +69,12 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Base
         //TODO: This is a problem, since this is also an external dependency.
         public void LoadFileData(bool selectableRows)
         {
-            DataTable table = ReadMatrix();
+            DataTable table = dataSourceFileRepository.Read(this.DatasetFilePath, this.TableName);
 
             if (table != null)
             {
+                // If selectableRows = true, then another column is generated to
+                // record whether a row is selected or not.
                 if (selectableRows)
                 {
                     DataColumn column = new DataColumn("Generate", typeof(bool));
@@ -101,6 +103,7 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Base
 
         public bool DataExists()
         {
+            //TODO: 
             if (currentDataTable == null)
             {
                 LoadFileData();
@@ -118,11 +121,5 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Base
         {
             this.currentDataTable = dataTable;
         }
-
-        private DataTable ReadMatrix()
-        {
-            return dataSourceFileRepository.Read(this.DatasetFilePath, this.TableName);
-        }
-
     }
 }
