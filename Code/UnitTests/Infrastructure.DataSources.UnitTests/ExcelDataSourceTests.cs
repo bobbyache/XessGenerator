@@ -12,6 +12,14 @@ namespace Infrastructure.DataSources.UnitTests
     [TestFixture]
     public class ExcelDataSourceTests
     {
+        /// <summary>
+        /// *************************************************************************
+        /// Unit of Work:           ExcelDataSource
+        /// State Under Test:       Initialized
+        /// Expected Behaviour:     Has a valid excel connection string for xls
+        ///                         Excel file extension.
+        /// *************************************************************************
+        /// </summary>
         [Test]
         [Category("Data Source")]
         public void ExcelDataSource_WhenInitialized_HasXLSConnectionString()
@@ -24,10 +32,19 @@ namespace Infrastructure.DataSources.UnitTests
             // Act
 
             // Assert
-            Assert.AreEqual("excel_data.xls", dataSource.FilePath);
-            Assert.AreEqual(dataSource.ConnectionString, "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=excel_data.xls;Extended Properties=\"Excel 8.0; HDR = YesIMEX = 2\";");
+            Assert.AreEqual("excel_data.xls", dataSource.FilePath, "When initialized with a valid Excel data source, should always expose the correct file path.");
+            Assert.AreEqual(dataSource.ConnectionString, "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=excel_data.xls;Extended Properties=\"Excel 8.0; HDR = YesIMEX = 2\";",
+                "When initialized with a valid Excel data source, should always expose the connection string.");
         }
 
+        /// <summary>
+        /// *************************************************************************
+        /// Unit of Work:           ExcelDataSource
+        /// State Under Test:       Initialized
+        /// Expected Behaviour:     Has a valid excel connection string for xlsx
+        ///                         Excel file extension.
+        /// *************************************************************************
+        /// </summary>
         [Test]
         [Category("Data Source")]
         public void ExcelDataSource_WhenInitialized_HasXLSXConnectionString()
@@ -40,11 +57,20 @@ namespace Infrastructure.DataSources.UnitTests
             // Act
 
             // Assert
-            Assert.AreEqual("excel_data.xlsx", dataSource.FilePath);
-            Assert.AreEqual(dataSource.ConnectionString, "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = excel_data.xlsx; Extended Properties =\"Excel 12.0;HDR=YesIMEX=1\";");
+            Assert.AreEqual("excel_data.xlsx", dataSource.FilePath, "When initialized with a valid Excel data source, should always expose the correct file path.");
+            Assert.AreEqual(dataSource.ConnectionString, "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = excel_data.xlsx; Extended Properties =\"Excel 12.0;HDR=YesIMEX=1\";",
+                "When initialized with a valid Excel data source, should always expose the connection string.");
         }
 
+        /// <summary>
+        /// *************************************************************************
+        /// Unit of Work:           ExcelDataSource
+        /// State Under Test:       Initialized
+        /// Expected Behaviour:     Has picked up the sheets within the excel file.
+        /// *************************************************************************
+        /// </summary>
         [Test]
+        [Category("Data Source")]
         public void ExcelDataSource_WhenInitialized_HasSheets()
         {
             // Arrange
@@ -58,10 +84,18 @@ namespace Infrastructure.DataSources.UnitTests
             string[] sheets = dataSource.GetExcelSheets();
 
             // Assert
-            Assert.AreEqual(3, sheets.Length);
+            Assert.AreEqual(3, sheets.Length, "When initialized with a valid Excel data source, should always make available any existing sheets.");
         }
 
+        /// <summary>
+        /// *************************************************************************
+        /// Unit of Work:           ExcelDataSource
+        /// State Under Test:       Initialized
+        /// Expected Behaviour:     Activates the first sheet
+        /// *************************************************************************
+        /// </summary>
         [Test]
+        [Category("Data Source")]
         public void ExcelDataSource_WhenInitialized_ActivatesFirstSheet()
         {
             // Arrange
@@ -74,11 +108,19 @@ namespace Infrastructure.DataSources.UnitTests
             dataSource.FetchData();       
 
             // Assert
-            Assert.IsNotNull(dataSource.ActiveSheet);
-            Assert.AreEqual("Sheet1", dataSource.ActiveSheet);
+            Assert.IsNotNull(dataSource.ActiveSheet, "When initialized with a valid Excel data source containing sheets, should always activate the first sheet.");
+            Assert.AreEqual("Sheet1", dataSource.ActiveSheet, "When initialized with a valid Excel data source containing sheets, should always activate the first sheet.");
         }
 
+        /// <summary>
+        /// *************************************************************************
+        /// Unit of Work:           ExcelDataSource
+        /// State Under Test:       Activate a Sheet
+        /// Expected Behaviour:     Activates the correct sheet.
+        /// *************************************************************************
+        /// </summary>
         [Test]
+        [Category("Data Source")]
         public void ExcelDataSource_ActivateSheet_LoadsCorrectSheet()
         {
             // Arrange
@@ -96,7 +138,15 @@ namespace Infrastructure.DataSources.UnitTests
             Assert.IsNotNull(dataSource.ActiveSheet);
         }
 
+        /// <summary>
+        /// *************************************************************************
+        /// Unit of Work:           ExcelDataSource
+        /// State Under Test:       Fetch Data (from Excel Spreadsheet)
+        /// Expected Behaviour:     Contains current data
+        /// *************************************************************************
+        /// </summary>
         [Test]
+        [Category("Data Source")]
         public void ExcelDataSource_WhenLoaded_HasCurrentData()
         {
             // Arrange
@@ -106,10 +156,12 @@ namespace Infrastructure.DataSources.UnitTests
             IExcelDataSource dataSource = new ExcelDataSource(dataRepository, stubRepository, "excel_data.xlsx");
 
             // Act
-            dataSource.FetchData();
-            
+            dataSource.FetchData();        
+           
             // Assert
             Assert.IsNotNull(dataSource.CurrentData);
+            Assert.IsTrue(dataSource.DataExists());
+
         }
 
         public class StubExcelConnectionRepository : IExcelConnectionRepository
@@ -148,7 +200,9 @@ namespace Infrastructure.DataSources.UnitTests
             public DataSet LoadExcel(string connectonString, string activeSheet, string topLeftCell, string bottomRightCell)
             {
                 DataSet dataSet = new DataSet();
-                dataSet.Tables.Add(new DataTable("TableName"));
+                DataTable table = new DataTable("TableName");
+                dataSet.Tables.Add(table);
+                table.Rows.Add(table.NewRow());
                 return dataSet;
             }
 
