@@ -182,7 +182,7 @@ namespace Infrastructure.DataSources.UnitTests
             }
         }
 
-        public class StubExcelDataRepository : IExcelDataRepository
+        public class StubExcelDataRepository : IExcelFileRepository
         {
             public bool OpenSuccess = false;
             public bool TargetFileExists = true;

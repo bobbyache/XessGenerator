@@ -2,7 +2,7 @@
 
 namespace CygSoft.Xess.Infrastructure.DataSources.Excel
 {
-    public interface IExcelDataRepository
+    public interface IExcelFileRepository
     {
         string[] GetSheetNames(string connectionString);
         bool FileExists(string filePath);

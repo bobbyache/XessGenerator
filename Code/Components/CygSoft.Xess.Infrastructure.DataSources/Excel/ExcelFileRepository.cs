@@ -8,7 +8,7 @@ using System;
 
 namespace CygSoft.Xess.Infrastructure.DataSources.Excel
 {
-    internal class ExcelDataRepository : IExcelDataRepository
+    internal class ExcelFileRepository : IExcelFileRepository
     {
         public bool FileExists(string filePath)
         {

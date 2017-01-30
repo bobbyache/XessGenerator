@@ -9,12 +9,12 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Excel
         private string filePath;
         private string activeSheet;
         private IExcelConnectionRepository excelConnectionRepository = null;
-        private IExcelDataRepository excelDataRepository = null;
+        private IExcelFileRepository excelDataRepository = null;
 
         public ExcelDataSource()
         {
             this.SourceTypeText = "Microsoft Excel";
-            this.excelDataRepository = new ExcelDataRepository();
+            this.excelDataRepository = new ExcelFileRepository();
             this.excelConnectionRepository = new ExcelConnectionRepository();
         }
 
@@ -22,7 +22,7 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Excel
         {
             this.SourceTypeText = "Microsoft Excel";
             this.FilePath = filePath;
-            this.excelDataRepository = new ExcelDataRepository();
+            this.excelDataRepository = new ExcelFileRepository();
             this.excelConnectionRepository = new ExcelConnectionRepository();
         }
 
@@ -30,13 +30,13 @@ namespace CygSoft.Xess.Infrastructure.DataSources.Excel
         {
             this.SourceTypeText = "Microsoft Excel";
             this.FilePath = filePath;
-            this.excelDataRepository = new ExcelDataRepository();
+            this.excelDataRepository = new ExcelFileRepository();
             this.excelConnectionRepository = new ExcelConnectionRepository();
         }
 
-        public ExcelDataSource(IExcelConnectionRepository excelConnectionRepository, string filePath) : this(new ExcelDataRepository(), excelConnectionRepository, filePath) { }
+        public ExcelDataSource(IExcelConnectionRepository excelConnectionRepository, string filePath) : this(new ExcelFileRepository(), excelConnectionRepository, filePath) { }
 
-        public ExcelDataSource(IExcelDataRepository excelDataRepository, IExcelConnectionRepository excelConnectionRepository, string filePath)
+        public ExcelDataSource(IExcelFileRepository excelDataRepository, IExcelConnectionRepository excelConnectionRepository, string filePath)
         {
             this.SourceTypeText = "Microsoft Excel";
             this.FilePath = filePath;

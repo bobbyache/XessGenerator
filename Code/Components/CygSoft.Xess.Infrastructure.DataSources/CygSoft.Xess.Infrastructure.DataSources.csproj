@@ -43,10 +43,10 @@
     <Compile Include="AbstractDataSource.cs" />
     <Compile Include="DataSourceFactory.cs" />
     <Compile Include="Excel\ExcelConnectionRepository.cs" />
-    <Compile Include="Excel\ExcelDataRepository.cs" />
+    <Compile Include="Excel\ExcelFileRepository.cs" />
     <Compile Include="Excel\ExcelDataSource.cs" />
     <Compile Include="Excel\IExcelConnectionRepository.cs" />
-    <Compile Include="Excel\IExcelDataRepository.cs" />
+    <Compile Include="Excel\IExcelFileRepository.cs" />
     <Compile Include="Excel\IExcelDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServer\CommonSqlServerConnection.cs" />
